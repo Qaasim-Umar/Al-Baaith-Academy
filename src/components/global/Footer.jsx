@@ -49,7 +49,7 @@ const Footer = () => {
               <div className="flex gap-4">
                 <div className="flex items-start">
                   <img
-                    src="/src/assets/whatsapp.svg"
+                    src="assets/whatsapp.svg"
                     alt="logo"
                     width={29}
                     height={56}
@@ -71,7 +71,7 @@ const Footer = () => {
               <div className="flex gap-4">
                 <div className="flex items-start">
                   <img
-                    src="/src/assets/facebook.svg"
+                    src="assets/facebook.svg"
                     alt="logo"
                     width={29}
                     height={56}
@@ -91,7 +91,7 @@ const Footer = () => {
               <div className="flex gap-4">
                 <div className="flex items-start">
                   <img
-                    src="/src/assets/mail.svg"
+                    src="assets/mail.svg"
                     alt="logo"
                     width={29}
                     height={56}
@@ -116,19 +116,19 @@ const Footer = () => {
             </p>
             <div className="flex gap-[16px]">
               <img
-                src="/src/assets/instagramwhite.svg"
+                src="assets/instagramwhite.svg"
                 alt="logo"
                 width={39}
                 height={39}
               />
               <img
-                src="/src/assets/whatsappwhite.svg"
+                src="assets/whatsappwhite.svg"
                 alt="logo"
                 width={39}
                 height={39}
               />
               <img
-                src="/src/assets/facebookwhite.svg"
+                src="assets/facebookwhite.svg"
                 alt="logo"
                 width={39}
                 height={39}

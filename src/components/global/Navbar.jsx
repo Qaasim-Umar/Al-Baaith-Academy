@@ -12,7 +12,7 @@ const Navbar = ({ scrollToSection, props }) => {
   };
   return (
     <div className="bg-[#E6F6EF] flex justify-between lg:px-20 px-8 py-3 items-center shadow-[0.667px_1.333px_5.333px_0px_rgba(38,122,149,0.05)] fixed top-0 right-0 left-0 z-50 h-fit">
-      <img src="src/assets/logo.svg" alt="logo" width={75} height={56} />
+      <img src="assets/logo.svg" alt="logo" width={75} height={56} />
 
       <div className={state ? "nav-links" : "nav-links active" } >
         <ul className="lg:flex lg:space-x-5 font-montserrat text-[#8C959180] text-[18px] font-medium cursor-pointer lg:ml-[290px] ">
