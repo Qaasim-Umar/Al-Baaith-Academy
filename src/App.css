@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+
+@theme {
+  --color-primary: #267A95;
+  --font-roboto: "Roboto", sans-serif;
+  --font-sourcecodepro: "Source Code Pro", monospace;
+  --font-lato: "Lato", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}

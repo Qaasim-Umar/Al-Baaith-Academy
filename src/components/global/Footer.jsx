@@ -137,7 +137,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-[67px] text-center text-[#DAF7F9] lg:text-[18.4px] text-[12.5px] sourcecodepro">
+        <div className="pt-[67px] text-center text-[#DAF7F9] lg:text-[18.4px] text-[12.5px] font-sourcecodepro">
           Copyright @ 2024 Al Baahith Academy{" "}
         </div>
       </div>
