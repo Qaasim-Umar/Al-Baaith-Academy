@@ -1,10 +1,18 @@
 @import "tailwindcss";
 
-
 @theme {
-  --color-primary: #267A95;
+  --color-primary: #267a95;
+  --color-secondary: #5e6978;
+  --color-secondary2:#28374B;
+
   --font-roboto: "Roboto", sans-serif;
   --font-sourcecodepro: "Source Code Pro", monospace;
   --font-lato: "Lato", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
+  --font-SairaStencilOne: "Saira Stencil One", sans-serif;
+  --font-Salsa: "Salsa", cursive;
+  --font-poppins: "Poppins", sans-serif;
+   --font-sansation:  "Sansation", sans-serif;
+
+  
 }
