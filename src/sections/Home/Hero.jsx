@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div>
-      <div className="flex bg-hero-background pb-[46px] lg:mt-[55px] mt-[70px]  lg:flex-row flex-col-reverse ">
+      <div className="flex bg-hero-background pb-[59px] lg:mt-[55px] mt-[70px]  lg:flex-row flex-col-reverse ">
         <div className="lg:w-[60%] relative">
           {/* Content for the left half of the screen */}
 
           <img
-            className="absolute top-[32px] lg:w-[75px] h-[323px] -left-1"
+            className="absolute top-[32px] lg:w-[75px] h-[373px] -left-1"
             src="assets/style.png"
             alt="logo"
           />
@@ -87,11 +87,10 @@ const Hero = () => {
 
         <div className="lg:w-[45%]">
           {/*Content for the right half of the screen */}
-          <div className="mt-[60px] flex justify-center  ">
+          <div className="mt-[60px] flex justify-center lg:pr-10  ">
             <img
               src="assets/Heroimage.png"
               alt="logo"
-              height={376}
               className="lg:w-[400px] w-[280px]"
             />
           </div>

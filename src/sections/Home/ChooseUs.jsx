@@ -4,7 +4,7 @@ import ChooseUsCard from '../../components/modals/ChooseUsCard'
 const ChooseUs = () => {
   return (
 
-    <div className='chooseus-bg h-fit pb-5 pr-[23px]'>
+    <div className='chooseus-bg h-fit pb-5 lg:px-[100px]'>
 
       <div className="flex flex-col justify-center items-center  gap-[19]">
         <h1 className='text-[#28374B] mt-[62px] font-sansation font-bold lg:text-[44px] leading-[120%] text-[24px] '>Why Choose Us?</h1>
@@ -18,7 +18,7 @@ const ChooseUs = () => {
           <img
             src='/assets/question.png'
             alt="logo"
-            className='h-[510px]'
+            className='lg:h-[530px]'
           />
         </div>
 

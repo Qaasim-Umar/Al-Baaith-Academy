@@ -4,12 +4,22 @@ import Facilitiescard from "../../components/modals/FacilitiesCard";
 const Facilities = () => {
   return (
     <div className="bg-facilities-background relative pb-[100px] px-[23px]">
-      <div className="flex position">
+      <div className="flex facilities-position ">
         <div className="flex justify-around items-center lg:h-[90px] lg:w-[533px] w-[297px] h-[67px] radius-shadow">
-          <img src="assets/svg/group1.svg" alt="logo" width={70} height={56} />
+       
+       
+       
 
+    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">4.5</span> <span className=" text-secondary text-[12px] font-montserrat">10k reviews</span></div>
+    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">10k</span> <span className=" text-secondary text-[12px] font-montserrat">Enrolled Students</span></div>
+    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">1k+</span> <span className=" text-secondary text-[12px] font-montserrat">Expert Tutors</span></div>
+      
+          {/* <img src="assets/svg/group1.svg" alt="logo" width={70} height={56} />
           <img src="assets/svg/group2.svg" alt="logo" width={95} height={56} />
-          <img src="assets/svg/group3.svg" alt="logo" width={70} height={56} />
+          <img src="assets/svg/group3.svg" alt="logo" width={70} height={56} /> */}
+
+
+
         </div>
       </div>
 
@@ -26,19 +36,19 @@ const Facilities = () => {
         <Facilitiescard
           heading="Books & Library"
           preview="You can use the self-study materials in our digital ..."
-          paragraph="oeglnskvndslknblknlknblknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace."
           src="/assets/books.png"
         />
         <Facilitiescard
           heading="Personalized Learning Portals"
           preview="These portals enhance..."
-          paragraph="oeglnskvndslknblknlknblknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace"
           src="/assets/id.png"
         />
         <Facilitiescard
           heading="Alumni Support"
           preview="Your education with us continues with post ..."
-          paragraph="oeglnskvndslknblknlknblknnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn"
+          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace"
           src="/assets/cap.png"
         />
       </div>
