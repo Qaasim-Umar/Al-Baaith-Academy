@@ -34,7 +34,7 @@ const Hero = () => {
             </div>
 
             <div>
-              <p className="text-[#4D4D4D] lg:mt-[18px] mt-[26px] lg:font-poppins lg:text-[16px] text-[14px]  font-medium leading-[19px] tracking-[0.356px] px-[44px] lg:px-0">
+              <div className="text-[#4D4D4D] lg:mt-[18px] mt-[26px] lg:font-poppins lg:text-[16px] text-[14px]  font-medium leading-[19px] tracking-[0.356px] px-[44px] lg:px-0">
                 <div className="flex gap-1 items-center font-montserrat ">
                   <svg
                     width="2"
@@ -57,7 +57,7 @@ const Hero = () => {
                   knowledge is a prerequisite for the creation of a just world
                   in which authentic peace can prevail.
                 </div>
-              </p>
+              </div>
             </div>
 
             <div className="lg:mt-[50px] m-auto lg:m-0  my-14">

@@ -1,24 +1,24 @@
 import "./App.css";
-import { Routes, Route} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Admission from "./pages/Admission";
+import Qmc from "./pages/Qmc";
 import Courses from "./pages/Courses";
 
-
-
-
 function App() {
-  
   return (
     <>
       {/* Routes */}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-           <Route path="/admission" element={<Admission />} />
-              <Route path="/courses" element={<Courses />} />
-      </Routes>
+      
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/admission" element={<Admission />} />
+          <Route path="/qmc" element={<Qmc />} />
+          <Route path="/Courses/:id" element={<Courses />} />
+        </Routes>
+    
     </>
   );
 }

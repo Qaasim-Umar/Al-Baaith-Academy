@@ -1,71 +1,41 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import Data from '../components/Data'
-import Navbar from '../components/global/Navbar'
-import Star from "/assets/5star.svg"
+import React from "react";
+import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
+import Star from "/assets/5star.svg";
 import Quran from "/assets/quranonwood.png";
+import CoursesOutline from "../components/CoursesOutline";
 import emptyRating from "/assets/emptyRating.svg";
 
-
-const Courses = () => {
-
-  const { id } = useParams();
-  const course = Data.find((c) => c.id === id);
-
-  if (!course) {
-    return <div className='text-9xl'>
-      No Course found
-    </div>
-  }
+const Courses = ({ CourseName }) => {
   return (
-    <div className='courses-page'>
+    <div className="courses-page">
       <Navbar />
-      <div className=''>
-        <div className="mt-[80px] font-montserrat">
-          <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
-            <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
-              {course.topTitle}
+      <div className="mt-[84px] font-montserrat">
+        <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
+          <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
+            Quran Memorization Course
+          </div>
+          <div className="flex lg:gap-10 gap-2   lg:flex-row flex-col text-left pl-[48px]  lg:text-[16px]  text-[12px] justify-center font-semibold font-montserrat text-secondary ">
+            <div className="flex lg:flex-col flex-col-reverse text-secondary gap-2">
+              <p className="flex gap-1">
+                Total Ratings
+                <img src={Star} alt="" />
+              </p>
+              <p>Duration: 24 months</p>
             </div>
-            <div className="flex lg:gap-10 gap-2   lg:flex-row flex-col text-left pl-[48px]  lg:text-[16px]  text-[12px] justify-center font-semibold font-montserrat text-secondary ">
-              <div className="flex lg:flex-col flex-col-reverse text-secondary gap-2">
-                <p className="flex gap-1">
-                  Total Ratings
-                  <img src={Star} alt="" />
-                </p>
-                <p>Duration: {course.duration} Months</p>
-              </div>
 
-              <div className="flex flex-col  gap-2">
-                <p>
-                  Application deadline:{" "}
-                  <a href="" className="text-[#00F]">
-                    Request info
-                  </a>
-                </p>
-                <p>Language of instruction: English, Arabic </p>
-              </div>
+            <div className="flex flex-col  gap-2">
+              <p>
+                Application deadline:{" "}
+                <a href="" className="text-[#00F]">
+                  Request info
+                </a>
+              </p>
+              <p>Language of instruction: English, Arabic </p>
             </div>
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       <div className="lg:flex gap-5 font-montserrat ">
 
@@ -75,63 +45,171 @@ const Courses = () => {
           </div>
           <div className=" space-y-4">
             <p className="text-primary text-[18px] font-bold">
-              {course.courseTitle}
+              Course Title: Quran Memorization Course
             </p>
             <p className="text-secondary text-[18px] font-bold">
-              Duration: {course.duration} Months
+              Duration: 24 Months
             </p>
             <div>
-
-
-
-         {Object.keys(course)
-  // find all module keys (module, module2, module3, module4, ...)
-  .filter((key) => key.startsWith("module"))
-  .flatMap((key) => course[key]) // flatten arrays
-  .map((mod, index) => (
-    <div key={index} className="my-8">
-      {/* ✅ Module Title */}
-      <p className="text-primary text-[18px] font-bold my-3">
-        {mod.moduleTitle1 ||
-         mod.moduleTitle2 ||
-         mod.moduleTitle3 ||
-         mod.moduleTitle4}
-      </p>
-
-      {/* ✅ Loop through all paragraph objects (paragraph1, paragraph2, paragraph3...) */}
-      {Object.keys(mod)
-        .filter((key) => key.startsWith("paragraph"))
-        .map((paraKey, i) => {
-          const para = Array.isArray(mod[paraKey])
-            ? mod[paraKey][0]
-            : mod[paraKey];
-
-          return (
-            <div key={i} className="leading-[22px] mt-4">
-              <p className="text-secondary text-[18px] font-semibold leading-[25px] pb-2">
-                {para.firstHeading}
+              <p className="text-primary text-[18px] font-bold">
+                Course Overview:
               </p>
-              <ul className="text-secondary font-medium leading-[22px] list-disc ml-5">
-                <li>{para.firstParagraph}</li>
-                {para.secondParagraph && <li>{para.secondParagraph}</li>}
-              </ul>
+              <p className="text-secondary font-medium leading-[22px]">
+                This Quran Memorization Course is designed to facilitate the
+                memorization (Hifz) of selected chapters (Surahs) from the Holy
+                Quran. The course aims to provide a structured and supportive
+                environment for students to memorize, understand, and retain
+                verses from the Quran.
+              </p>
             </div>
-          );
-        })}
-    </div>
-  ))}
-
-
-
-
-
+            <div>
+              <p className="text-primary text-[18px] font-bold">
+                Course Objectives:
+              </p>
+              <ul className="text-secondary font-medium leading-[22px]">
+                <li>
+                  Enable students to memorize selected Surahs with proper
+                  Tajweed (pronunciation) and Tarteel (recitation).
+                </li>
+                <li>
+                  Develop a deep understanding of the meanings and context of
+                  the memorized verses.{" "}
+                </li>
+                <li>
+                  Foster a love for the Quran and encourage a lifelong
+                  commitment to its recitation and memorization.{" "}
+                </li>
+                <li>
+                  Provide students with effective memorization techniques and
+                  strategies.
+                </li>
+              </ul>
             </div>
           </div>
 
+          {/* course outline  */}
 
+          <p className="text-primary text-[18px] font-bold my-5">
+            Course Outline:
+          </p>
+          <div className="text-primary text-[18px] font-semibold space-y-5">
+            <p>Year 1: Foundation and Basic Memorization Techniques</p>
+            <p>Semester 1: Establishing a Solid Foundation (Months 1-6)</p>
+          </div>
+
+          <CoursesOutline
+            coursesHeading="Introduction to Quran Memorization"
+            firstOutline="Understanding the importance and virtues of memorizing the Quran."
+            secondOutline="Setting personal goals for the course."
+          />
+
+          <CoursesOutline
+            coursesHeading="Basic Tajweed Principles"
+            firstOutline="Applying Tajweed rules to facilitate accurate memorization."
+            secondOutline="Pronunciation and characteristics of letters."
+          />
+
+          <CoursesOutline
+            coursesHeading="Short Surahs Memorization"
+            firstOutline="Memorization of short Surahs from the last Juz (Part) of the Quran."
+            secondOutline="Emphasis on proper pronunciation and Tajweed."
+          />
+
+          <div className="text-primary text-[18px] font-semibold ">
+            <p>Semester 2: Building Memorization Skills (Months 7-12)</p>
+          </div>
+
+          <CoursesOutline
+            coursesHeading="Extended Surahs and Juz Amma"
+            firstOutline="Memorization of selected extended Surahs and Juz Amma."
+            secondOutline="Implementation of advanced memorization techniques."
+          />
+
+          <CoursesOutline
+            coursesHeading="Revision Strategies"
+            firstOutline="Introduction to effective revision schedules."
+            secondOutline="Memorization reinforcement for sustained retention."
+          />
+
+          <CoursesOutline
+            coursesHeading="Memorization Progress Assessment"
+            firstOutline="Evaluation of individual progress in memorization."
+            secondOutline="Feedback and guidance for improvement."
+          />
+
+          <div className="text-primary text-[18px] font-semibold space-y-5">
+            <p>Year 2: Advanced Memorization Techniques and Application</p>
+            <p>Semester 3: Memorization Mastery (Months 13-18)</p>
+          </div>
+
+          <CoursesOutline
+            coursesHeading="Mid-Length Surahs Memorization"
+            firstOutline="Memorization of mid-length Surahs from various parts of the Quran."
+            secondOutline="Advanced techniques for memorizing longer passages."
+          />
+
+          <CoursesOutline
+            coursesHeading="Focused Memorization Sessions"
+            firstOutline="Specialized sessions targeting specific challenges."
+            secondOutline="Group recitation and memorization support."
+          />
+
+          <CoursesOutline
+            coursesHeading="Tajweed Integration"
+            firstOutline="
+Integrating Tajweed rules seamlessly into memorization."
+            secondOutline="Fine-tuning pronunciation and recitation."
+          />
+
+          <div className="text-primary text-[18px] font-semibold ">
+            <p>Semester 4: Completion and Review (Months 19-24)</p>
+          </div>
+
+          <CoursesOutline
+            coursesHeading="Completion of Quran Memorization"
+            firstOutline="Finalizing the memorization of the entire Quran."
+            secondOutline="Celebrating individual achievements and milestones."
+          />
+
+          <CoursesOutline
+            coursesHeading="Comprehensive Review and Reflection"
+            firstOutline="In-depth review of memorized portions."
+            secondOutline="Personal reflections on the memorization journey.
+"
+          />
+          <CoursesOutline
+            coursesHeading="Assessment and Certification"
+            firstOutline="Culminating assessment of memorization proficiency."
+            secondOutline="
+Certification upon successful completion of the Quran Memorization Journey. 
+"
+          />
+
+          <div className="text-primary text-[18px] font-semibold ">
+            <p>Materials Required</p>
+          </div>
+          <CoursesOutline
+            firstOutline="Mushaf (Quran copy) with clear Tajweed markings."
+            secondOutline="Notebooks for recording personal reflections and understanding of verses. 
+"
+            thirdOutline="Audio recordings of the memorized Surahs for listening and correction"
+          />
+
+          <div className="text-primary text-[18px] font-semibold ">
+            <p>Prerequisites:</p>
+          </div>
+          <CoursesOutline
+            firstOutline="Basic understanding of Arabic alphabet and reading skills."
+            secondOutline="
+Commitment to regular attendance and daily memorization practice. 
+"
+          />
 
           <p className="text-secondary text-[14px] font-semibold leading-[19.3px] py-5">
-            {course.underNote}
+            This comprehensive 2-year course is designed to guide students
+            through a systematic and supported Quran memorization journey,
+            ensuring a strong foundation, advanced memorization skills, and
+            successful completion of memorizing the entire Quran.
           </p>
 
           <div className="">
@@ -435,13 +513,9 @@ const Courses = () => {
         </div>
       </div>
 
-
-
-
-
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Courses
+export default Courses;

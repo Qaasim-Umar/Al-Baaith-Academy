@@ -137,9 +137,12 @@ const About = () => {
         spiritual growth. Welcome to Al Baahith Online Academy!
       </div>
 
+<div className="my-8">
+<Testimonials/>
+</div>
       {/* section 4 */}
 
-      <div className=" space-y-5 text-center">
+      <div className=" space-y-5 text-center mb-8">
         <p className=" text-secondary2 font-montserrat text-[22px] font-bold">
           Ready to get started?
         </p>
@@ -160,7 +163,7 @@ const About = () => {
 
 
      
-<Testimonials/>
+
 
 
       <Footer />

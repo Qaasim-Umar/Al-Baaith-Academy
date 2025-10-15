@@ -3,7 +3,9 @@ import { HiBars3 } from "react-icons/hi2";
 import { FaTimes } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { HashLink as NavLink } from "react-router-hash-link";
+import { NavHashLink } from "react-router-hash-link";
 import "../../global.css";
 
 const Navbar = ({ scrollToSection, props }) => {
@@ -16,8 +18,8 @@ const Navbar = ({ scrollToSection, props }) => {
       <img src="assets/logo.svg" alt="logo" width={75} height={56} />
 
       <div className={state ? "nav-links" : "nav-links active"}>
-        <ul className="lg:flex lg:space-x-5 font-montserrat text-[#8C959180] text-[18px] font-medium cursor-pointer lg:ml-[290px] ">
-          <NavLink
+        <ul className="lg:flex lg:space-x-5 font-montserrat text-[#00000080] text-[18px] font-medium cursor-pointer lg:ml-[290px] ">
+          <NavHashLink
             to="/"
             className={({ isActive }) =>
               isActive
@@ -26,9 +28,9 @@ const Navbar = ({ scrollToSection, props }) => {
             }
           >
             <li>Home</li>
-          </NavLink>
+          </NavHashLink>
 
-          <NavLink
+          <NavHashLink
             to="/about"
             className={({ isActive }) =>
               isActive
@@ -37,20 +39,18 @@ const Navbar = ({ scrollToSection, props }) => {
             }
           >
             <li>About Us</li>
-          </NavLink>
+          </NavHashLink>
 
-          <NavLink
-            to="/Courses"
-            className={({ isActive }) =>
-              isActive
-                ? "custom-underline-active hover:text-[#267A95]"
-                : "notactive.custom hover:text-[#267A95]"
-            }
+
+
+          <NavHashLink
+          smooth
+            to="/#featured"
           >
             <li>Courses</li>
-          </NavLink>
+          </NavHashLink>
 
-          <NavLink
+          <NavHashLink
             to="/Admission"
             className={({ isActive }) =>
               isActive
@@ -59,7 +59,7 @@ const Navbar = ({ scrollToSection, props }) => {
             }
           >
             <li>Admission</li>
-          </NavLink>
+          </NavHashLink>
         </ul>
 
         <div>

@@ -4,9 +4,9 @@ const Footer = () => {
   return (
     <>
       <div className=" bg-[#267a95] lg:rounded-t-[50px] rounded-t-[14px] lg:px-[118px] px-[23px] pt-[60px] pb-[20px]">
-        <div className=" flex justify-between lg:gap-5 gap-[80px]  text-[#ffffff]  ">
+        <div className=" flex justify-between lg:gap-7 gap-10 lg:flex-row flex-col  text-[#ffffff]  ">
          
-          <div className=" w-1/4 ">
+          <div className=" lg:w-1/4 ">
             <p className="pb-[16px] font-lato text-[23.5px] font-bold">
               About Us
             </p>
@@ -19,7 +19,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className=" w-1/4">
+          <div className=" lg:w-1/4">
             <p className="pb-[16px] font-lato text-[23.5px] font-bold">
               Courses
             </p>
@@ -42,7 +42,9 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className=" w-1/4 ">
+         
+
+          <div className=" lg:w-1/4 ">
             <p className="pb-[16px] font-lato text-[23.5px] font-bold">
               Contact Us
             </p>
@@ -111,11 +113,15 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className=" w-1/4 mx-auto">
+          <div className=" lg:w-1/4 ">
             <p className="pb-[16px] font-lato text-[23.5px] font-bold">
               Follow Us
             </p>
-            <div className="flex gap-[16px]">
+
+
+            <div className=" flex space-x-2 flex-wrap  ">
+
+              
               <img
                 src="assets/instagramwhite.svg"
                 alt="logo"
@@ -127,13 +133,23 @@ const Footer = () => {
                 alt="logo"
                 width={39}
                 height={39}
+                
               />
+             
               <img
                 src="assets/facebookwhite.svg"
                 alt="logo"
                 width={39}
                 height={39}
               />
+               <img
+                src="assets/x.svg"
+                alt="logo"
+                width={39}
+                height={39}
+               
+              />
+          
             </div>
           </div>
         </div>

@@ -42,9 +42,9 @@ const Faq = () => {
                     <p className='text-[#5E6978] font-montserrat font-medium leading-[25.2px] tracking-[0.32px] text-[14px] lg:text-[16px] px-[13px] text-center'>Got questions? We&apos;ve got answers! Explore our Frequently <br />Asked Questions for insights and information.</p>
                 </div>
 
-                <div className="flex justify-center items-center flex-col lg:flex-row gap-8">
+                <div className="flex justify-center items-center flex-col lg:flex-row gap-8 lg:pr-20">
 
-                    <div className="lg:w-2/5">
+                    <div className="lg:w-2/5 ">
                         <img
                             src='/assets/faq.png'
                             alt="logo"
@@ -54,7 +54,7 @@ const Faq = () => {
                     </div>
 
                     <div className="lg:w-3/5">
-                        <section className="bg-[#005c45] rounded-lg" >
+                        <section className="bg-[#dbe4e2] rounded-lg" >
 
 
                             <div className="space-y-4">

@@ -1,3 +1,6 @@
+html{
+  scroll-behavior: smooth;
+}
 /* custom styles for navbar  */
 
 .custom-underline-active::after {
@@ -104,10 +107,21 @@ background-size: cover;
   box-shadow: 2px 10px 20px 0px rgba(0, 0, 0, 0.1);
 }
 
+.courses-background{
+  background:url("assets/Registration.png");
+  background-size: cover;
+}
+
+/* admission */
+select option[disabled]{
+  color: red;
+}
 
 
-
-
+/* courses */
+.courses-page{
+  background: linear-gradient(180deg, rgba(247, 249, 250, 0.00) 0.15%, #F7F9FA 33%);
+}
 
 
 
