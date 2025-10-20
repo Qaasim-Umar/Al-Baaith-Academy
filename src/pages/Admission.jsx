@@ -25,12 +25,10 @@ const Admission = () => {
 
   return (
     <>
-      <div className="courses-background mt-12 ">
+      <div className="courses-background">
         <Navbar />
 
-        <div>
-          <p>..</p>
-        </div>
+        
 
         <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem] w-[22rem] sm:w-[25rem] md:w-[40rem]  m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]  ">
           <div className="text-center m-auto flex justify-center items-center space-y-5 flex-col mt-[2.5rem]">

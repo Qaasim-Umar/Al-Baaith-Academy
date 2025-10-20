@@ -10,7 +10,7 @@ const About = () => {
     <>
       <Navbar />
 
-      <div className=" pt-[84px] ">
+      <div className="">
         <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
           <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
             About Us

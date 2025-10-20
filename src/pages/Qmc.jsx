@@ -10,7 +10,7 @@ const Courses = ({ CourseName }) => {
   return (
     <div className="courses-page">
       <Navbar />
-      <div className="mt-[84px] font-montserrat">
+      <div className="font-montserrat">
         <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
           <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
             Quran Memorization Course

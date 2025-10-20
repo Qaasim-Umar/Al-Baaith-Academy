@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div>
-      <div className="flex bg-hero-background pb-[59px] lg:mt-[55px] mt-[70px]  lg:flex-row flex-col-reverse ">
+      <div className="flex bg-hero-background pb-[99px] lg:flex-row flex-col  ">
         <div className="lg:w-[60%] relative">
+
           {/* Content for the left half of the screen */}
 
           <img
@@ -14,7 +15,7 @@ const Hero = () => {
             alt="logo"
           />
 
-          <div className="font-montserrat flex flex-col lg:ml-[140px] lg:mt-[123px] mt-[70px] text-center lg:text-left lg:px-[25px] px-[10px] ">
+          <div className="font-montserrat flex flex-col lg:ml-[140px]  mt-[140px] text-center lg:text-left lg:px-[25px] px-[10px] ">
             <div className="font-bold lg:text-[18px] text-[14px] tracking-[0.191px]">
               <span className="text-primary font-poppins">World Class </span>
               <span className="text-[#5E6978] font-poppins">Education</span>
@@ -87,11 +88,11 @@ const Hero = () => {
 
         <div className="lg:w-[45%]">
           {/*Content for the right half of the screen */}
-          <div className="mt-[60px] flex justify-center lg:pr-10  ">
+          <div className="lg:t-[60px] flex justify-center lg:pr-10  ">
             <img
               src="assets/Heroimage.png"
               alt="logo"
-              className="lg:w-[400px] w-[280px]"
+              className="lg:w-[400px] w-[280px] lg:mt-14 "
             />
           </div>
         </div>

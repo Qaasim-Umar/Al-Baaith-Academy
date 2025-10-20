@@ -14,12 +14,14 @@ const Navbar = ({ scrollToSection, props }) => {
     setState(!state);
   };
   return (
-    <div className="bg-[#E6F6EF] flex justify-between lg:px-20 px-8 py-3 items-center shadow-[0.667px_1.333px_5.333px_0px_rgba(38,122,149,0.05)] fixed top-0 right-0 left-0 z-50 h-fit">
+    <div className="bg-[#E6F6EF] flex justify-between lg:px-20 px-8 py-3 items-center shadow-[0.667px_1.333px_5.333px_0px_rgba(38,122,149,0.05)] fixed top-0 right-0 left-0 z-50 lg:static h-fit ">
       <img src="assets/logo.svg" alt="logo" width={75} height={56} />
 
       <div className={state ? "nav-links" : "nav-links active"}>
-        <ul className="lg:flex lg:space-x-5 font-montserrat text-[#00000080] text-[18px] font-medium cursor-pointer lg:ml-[290px] ">
-          <NavHashLink
+        <div className="flex items-center">
+      <div>
+        <ul className="lg:flex lg:space-x-5 font-montserrat  text-[#00000080] text-[18px] font-medium cursor-pointer  ">
+         <NavHashLink
             to="/"
             className={({ isActive }) =>
               isActive
@@ -61,14 +63,15 @@ const Navbar = ({ scrollToSection, props }) => {
             <li>Admission</li>
           </NavHashLink>
         </ul>
-
-        <div>
+        </div> 
+        <div className="">
           <Link
             to="/Admission"
             className="flex w-[136px] h-[44px] items-center justify-center font-montserrat rounded-[4px] border border-[#267A95] text-[16px] text-[#267A95] font-semibold"
           >
             Register Now{" "}
           </Link>
+        </div>
         </div>
       </div>
 
