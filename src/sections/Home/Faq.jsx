@@ -39,7 +39,7 @@ const Faq = () => {
             <div>
                 <div className="flex flex-col justify-center items-center my-[37px] gap-[19] lg:px-10 ">
                     <h1 className='text-[#28374B] lg:text-[44px] text-[23px] font-sansation font-bold'>Frequently Asked Questions</h1>
-                    <p className='text-[#5E6978] font-montserrat font-medium leading-[25.2px] tracking-[0.32px] text-[14px] lg:text-[16px] px-[13px] text-center'>Got questions? We&apos;ve got answers! Explore our Frequently <br />Asked Questions for insights and information.</p>
+                    <p className='text-[#5E6978] font-montserrat lg:w-[50%] w-[85%] font-medium leading-[25.2px] tracking-[0.32px] text-[14px] lg:text-[16px] px-[13px] text-center'>Got questions? We&apos;ve got answers! Explore our Frequently Asked Questions for insights and information.</p>
                 </div>
 
                 <div className="flex justify-center items-center flex-col lg:flex-row gap-8 lg:pr-20">
@@ -54,22 +54,22 @@ const Faq = () => {
                     </div>
 
                     <div className="lg:w-3/5">
-                        <section className="bg-[#dbe4e2] rounded-lg" >
+                        <section className="bg-[linear-gradient(180deg,rgba(221,247,247,0.5)_0%,rgba(221,247,247,0.5)_100%)] rounded-lg" >
 
 
                             <div className="space-y-4">
                                 {faqData.map((faq, index) => (
                                     <div key={index} className="">
-                                        <button className=" p-[25px] flex items-center justify-between w-full " onClick={() => toggleAnswer(index)}>
-                                            <h1 className=" font-montserrat font-bold text-[#2E2C2C] leading-[19.5px] ">{faq.question}</h1>
-                                            <span className={`text-gray-400 bg-gray-200 rounded-full ${openIndex === index ? 'transform rotate-45' : ''}`}>
+                                        <button className=" p-[25px] flex items-center justify-between md:w-[600px] lg:w-full w-[330px] " onClick={() => toggleAnswer(index)}>
+                                            <h1 className=" font-montserrat font-bold text-left  text-[#2E2C2C] leading-[19.5px] ">{faq.question}</h1>
+                                            <span className={`text-gray-400 rounded-full ${openIndex === index ? 'transform rotate-45' : ''}`}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                                 </svg>
                                             </span>
                                         </button>
                                         {openIndex === index && (
-                                            <p className=" py-[6px] px-[21px] bg-[#FCFEFD] font-montserrat font-medium text-[14px] leading-[19.6px] tracking-[3%] text-[#5E6978]">{faq.answer}</p>
+                                            <p className=" py-[6px] px-[21px] bg-[#FCFEFD] font-montserrat font-medium text-[14px] leading-[19.6px] tracking-[3%] md:w-[600px] w-[330px] lg:w-full text-[#5E6978]">{faq.answer}</p>
                                         )}
                                     </div>
                                 ))}

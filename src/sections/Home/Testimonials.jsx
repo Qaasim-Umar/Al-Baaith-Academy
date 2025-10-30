@@ -9,8 +9,8 @@ const Testimonials = () => {
           <h1 className="text-secondary2 lg:text-[44px] text-[24px] font-bold font-sansation">
             Testimonials
           </h1>
-          <p className="text-secondary text-[14px] lg:text-[16px] font-montserrat font-medium leading-[19.2px] tracking-[0.32px] px-[13px] text-center">
-            Discover What Our Students Have to Say – Real Stories, Real <br />
+          <p className="text-secondary text-[14px] lg:text-[16px] font-montserrat font-medium leading-[19.2px] tracking-[0.32px] px-[13px] lg:w-[50%] w-[80%] text-center">
+            Discover What Our Students Have to Say – Real Stories, Real
             Transformations, Real Testimonials...
           </p>
         </div>

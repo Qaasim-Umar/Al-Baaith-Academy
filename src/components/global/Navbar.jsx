@@ -18,7 +18,9 @@ const Navbar = ({ scrollToSection, props }) => {
       <img src="assets/logo.svg" alt="logo" width={75} height={56} />
 
       <div className={state ? "nav-links" : "nav-links active"}>
-        <div className="flex items-center">
+        <div className="flex items-center gap-[80px]">
+
+
       <div>
         <ul className="lg:flex lg:space-x-5 font-montserrat  text-[#00000080] text-[18px] font-medium cursor-pointer  ">
          <NavHashLink
@@ -64,6 +66,8 @@ const Navbar = ({ scrollToSection, props }) => {
           </NavHashLink>
         </ul>
         </div> 
+
+
         <div className="">
           <Link
             to="/Admission"
@@ -72,17 +76,20 @@ const Navbar = ({ scrollToSection, props }) => {
             Register Now{" "}
           </Link>
         </div>
+
         </div>
       </div>
 
-      <div className="bar">
-        <button className={state ? " show" : "hidden"} onClick={handleClick}>
+      <div className="bar ">
+        <button className={state ? " menu-show" : "menu-hidden"} onClick={handleClick}>
           <HiBars3 />
         </button>
-        <button className={state ? "hidden" : "show "} onClick={handleClick}>
+        <button className={state ? "menu-hidden" : "menu-show "} onClick={handleClick}>
           <FaTimes />
         </button>
-      </div>
+      </div> 
+     
+
     </div>
   );
 };

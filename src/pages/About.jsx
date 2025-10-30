@@ -10,7 +10,7 @@ const About = () => {
     <>
       <Navbar />
 
-      <div className="">
+      <div className="lg:mt-0 mt-21">
         <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
           <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
             About Us
@@ -63,7 +63,7 @@ const About = () => {
 
         {/* section 2 */}
         <div className="bg-[linear-gradient(255deg,#E5F5F7_0.68%,#E8F7E5_101.18%)]">
-          <section className="bg-[url('/assets/bluebg.png')] bg-cover bg-center h-screen flex md:flex-row-reverse flex-col-reverse gap-[74px]   items-center justify-between lg:px-[101px] my-12 ">
+          <section className="bg-[url('/assets/bluebg.png')] pb-5 bg-cover bg-center lg:h-screen flex md:flex-row-reverse flex-col-reverse gap-[74px]   items-center justify-between lg:px-[101px] my-12 ">
             <div className="md:w-1/2 md:text-left mx-6 space-y-4">
               <h1 className="lg:text-[48px] text-[20px]  font-bold text-primary font-montserrat">
                 {" "}

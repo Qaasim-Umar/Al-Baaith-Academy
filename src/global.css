@@ -30,9 +30,9 @@ html{
   gap: 13rem;
 }
 
-.show,
-.hidden {
-  display: none;
+.menu-show,
+.menu-hidden {
+ display: none;
 }
 
 
@@ -43,6 +43,7 @@ html{
   background: #fff;
   height: 222px;
   width: 248px;
+  margin: auto;
 }
 
 /* slider */
@@ -112,6 +113,16 @@ background-size: cover;
   background-size: cover;
 }
 
+/* Hide scrollbar for all elements with scrollbar-hide class */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 /* admission */
 select option[disabled]{
   color: red;
@@ -128,14 +139,13 @@ select option[disabled]{
 
 
 
-
-
 @media only screen and (max-width: 992px) {
-  .hidden {
+  .menu-hidden {
     display: none;
   }
+  
 
-  .show {
+  .menu-show {
     display: block;
   }
 

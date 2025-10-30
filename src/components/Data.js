@@ -101,6 +101,7 @@ const Data = [
           firstParagraph: "Continuous assessment through quizzes and practical evaluations.",
           secondParagraph: "Certification upon successful completion of the Quran Recitation Mastery Course.",
         },
+        
       },
     ],
 

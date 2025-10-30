@@ -23,7 +23,7 @@ const Facilities = () => {
         </div>
       </div>
 
-      <div className="flex flex-col justify-center items-center pt-[70px] gap-[19]">
+      <div className="flex flex-col justify-center items-center lg:pt-[120px] pt-[70px] gap-[19]">
         <h1 className="text-[#28374B] lg:text-[44px] text-[24px] font-sansation font-bold leading-[120%]">
           Our Learning Facilities
         </h1>
@@ -32,7 +32,7 @@ const Facilities = () => {
           Facilities That Fuel Our Educational Journey
         </p>
       </div>
-      <div className="flex justify-center lg:gap-[64px] gap-[24px] mt-[54px] flex-col lg:flex-row items-center ">
+      <div className="flex justify-center lg:gap-[64px] gap-[24px] mt-[54px] md:flex-row flex-col lg:flex-row items-center ">
         <Facilitiescard
           heading="Books & Library"
           preview="You can use the self-study materials in our digital ..."

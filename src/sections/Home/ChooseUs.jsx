@@ -12,19 +12,19 @@ const ChooseUs = () => {
       </div>
 
 
-      <div className="flex mt-[37px] flex-col lg:flex-row ">
+      <div className="flex mt-[37px] flex-col items-center lg:flex-row ">
         <div className="lg:w-2/5">
 
           <img
             src='/assets/question.png'
             alt="logo"
-            className='lg:h-[530px]'
+            className='lg:h-[530px] md:h-[470px]'
           />
         </div>
 
-        <div className="lg:w-3/5  flex flex-col lg:flex-row gap-[16px] m-auto" >
+        <div className="lg:w-3/5  flex flex-col items-center lg:flex-row gap-[16px] m-auto px-6" >
 
-          <div className="flex gap-[16px] mt-[45px] lg:flex-col pl-10">
+          <div className="flex gap-[16px] mt-[45px] lg:flex-col lg:pl-10">
             <ChooseUsCard chooseHeading='World wide learning' choosePara='So many other responsibilities?
                We provide flexible scheduling for our online Quran courses.' chooseSrc='/assets/globe.svg' />
             <ChooseUsCard chooseHeading='Evaluation Report

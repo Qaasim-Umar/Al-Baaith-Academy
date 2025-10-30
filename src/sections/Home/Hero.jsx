@@ -4,18 +4,18 @@ import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <div>
-      <div className="flex bg-hero-background pb-[99px] lg:flex-row flex-col  ">
-        <div className="lg:w-[60%] relative">
+      <div className="flex bg-hero-background pb-[99px] lg:flex-row md:flex-row flex-col  ">
+        <div className="lg:w-[60%] md:w-[60%] relative">
 
           {/* Content for the left half of the screen */}
 
           <img
-            className="absolute top-[32px] lg:w-[75px] h-[373px] -left-1"
+            className="absolute md:top-[32px] top-[140px] lg:w-[75px] h-[373px] md:-left-1 -left-11 opacity-50 lg:opacity-100"
             src="assets/style.png"
             alt="logo"
           />
 
-          <div className="font-montserrat flex flex-col lg:ml-[140px]  mt-[140px] text-center lg:text-left lg:px-[25px] px-[10px] ">
+          <div className="font-montserrat flex flex-col md:ml-[100px] lg:ml-[140px] lg:mt-[80px] mt-[140px]  text-center md:text-left lg:text-left ">
             <div className="font-bold lg:text-[18px] text-[14px] tracking-[0.191px]">
               <span className="text-primary font-poppins">World Class </span>
               <span className="text-[#5E6978] font-poppins">Education</span>
@@ -24,7 +24,7 @@ const Hero = () => {
               <span className="text-[#28374B] font-montserrat lg:text-[44px] text-[28px] font-bold lg:leading-[52px] -tracking-[0.478px] ">
                 Study From Anywhere
               </span>
-              <span className="flex lg:flex-row flex-col items-center lg:gap-2 gap-0 text-[#28374B] font-montserrat lg:text-[44px] text-[28px] font-bold lg:leading-[58px] -tracking-[0.478px]">
+              <span className="flex lg:flex-row md:flex-row flex-col items-center lg:gap-2 gap-0 text-[#28374B] font-montserrat lg:text-[44px] text-[28px] font-bold lg:leading-[58px] -tracking-[0.478px]">
                 With
                 <img
                   src="assets/expert.svg"
@@ -35,8 +35,8 @@ const Hero = () => {
             </div>
 
             <div>
-              <div className="text-[#4D4D4D] lg:mt-[18px] mt-[26px] lg:font-poppins lg:text-[16px] text-[14px]  font-medium leading-[19px] tracking-[0.356px] px-[44px] lg:px-0">
-                <div className="flex gap-1 items-center font-montserrat ">
+              <div className="text-[#4D4D4D] lg:mt-[18px] mt-[26px] lg:font-poppins lg:text-[16px] text-[14px]  font-medium leading-[19px] tracking-[0.356px] px-[44px] md:px-0 lg:px-0">
+                <div className="flex gap-1 items-center font-montserrat w-[80%] md:w-full m-auto ">
                   <svg
                     width="2"
                     height="33"
@@ -61,7 +61,7 @@ const Hero = () => {
               </div>
             </div>
 
-            <div className="lg:mt-[50px] m-auto lg:m-0  my-14">
+            <div className="lg:mt-[50px] m-auto md:m-0 md:my-7 lg:m-0  my-14">
               <Link
                 href=""
                 className="font-montserrat rounded-[6.7px] lg:bg-gradient-to-r lg:from-[#323F81] lg:to-[#2DC8D6] bg-gradient-to-r from-[#267A95] to-[#0D8B8B] lg:text-[21px] text-[#ffffff] flex gap-3 justify-center items-center lg:w-[204px] lg:h-[62px] w-[147px] h-[51px]  [box-shadow:0px_11.807px_44.276px_5.903px_rgba(38,122,149,0.30)]  "
@@ -86,13 +86,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="lg:w-[45%]">
+        <div className="lg:w-[45%] md:w-[45%]">
           {/*Content for the right half of the screen */}
-          <div className="lg:t-[60px] flex justify-center lg:pr-10  ">
+          <div className=" flex justify-center lg:pr-10  ">
             <img
               src="assets/Heroimage.png"
               alt="logo"
-              className="lg:w-[400px] w-[280px] lg:mt-14 "
+              className="lg:w-[380px] w-[280px] md:mt-[100px] lg:mt-6 "
             />
           </div>
         </div>

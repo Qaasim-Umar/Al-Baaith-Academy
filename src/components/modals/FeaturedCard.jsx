@@ -2,8 +2,8 @@ import React from "react";
 
 const FeaturedCard = ({ featuredSrc, featuredPara, month }) => {
   return (
-    <div>
-      <div className="featured-container w-[252px]  h-auto">
+    <div className="">
+      <div className="featured-container w-[252px]  h-auto  ">
         <div className="p-[8px] ">
           <img
             src={featuredSrc}
