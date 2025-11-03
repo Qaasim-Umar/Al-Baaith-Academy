@@ -109,7 +109,7 @@ background-size: cover;
 }
 
 .courses-background{
-  background:url("assets/Registration.png");
+  background:url("/assets/Registration.png");
   background-size: cover;
 }
 

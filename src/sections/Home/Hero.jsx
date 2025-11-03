@@ -1,17 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import bluestyle from "/assets/style.png"
 
 const Hero = () => {
   return (
     <div>
-      <div className="flex bg-hero-background pb-[99px] lg:flex-row md:flex-row flex-col  ">
+      <div className="flex bg-hero-background pb-[99px] lg:flex-row md:flex-row flex-col lg:h-[90%]  ">
         <div className="lg:w-[60%] md:w-[60%] relative">
 
           {/* Content for the left half of the screen */}
 
           <img
             className="absolute md:top-[32px] top-[140px] lg:w-[75px] h-[373px] md:-left-1 -left-11 opacity-50 lg:opacity-100"
-            src="assets/style.png"
+            src={bluestyle}
             alt="logo"
           />
 
