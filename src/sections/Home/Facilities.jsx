@@ -3,7 +3,7 @@ import Facilitiescard from "../../components/modals/FacilitiesCard";
 
 const Facilities = () => {
   return (
-    <div className="bg-facilities-background relative pb-[100px] px-[23px]">
+    <section className="bg-facilities-background relative pb-[100px] px-[23px]">
       <div className="flex facilities-position ">
         <div className="flex justify-around items-center lg:h-[90px] lg:w-[533px] w-[297px] h-[67px] radius-shadow">
        
@@ -52,7 +52,7 @@ const Facilities = () => {
           src="/assets/cap.png"
         />
       </div>
-    </div>
+    </section>
   );
 };
 

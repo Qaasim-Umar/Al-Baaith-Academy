@@ -4,32 +4,31 @@ import Footer from "../components/global/Footer";
 import { Link } from "react-router-dom";
 import Testimonials from "../sections/Home/Testimonials";
 
-
 const About = () => {
   return (
     <>
       <Navbar />
 
       <div className="lg:mt-0 mt-21">
-        <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
-          <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
+        <main className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
+          <h1 className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
             About Us
-          </div>
+          </h1>
           <p className=" text-primary font-SairaStencilOne text-[14px] lg:text-[24px] tracking-[1.92px] mx-4">
             {" "}
             <span className="text-[#5E6978]">Welcome to</span> Al Baahith Online
             Academy!
           </p>
-        </div>
+        </main>
 
         <div className="mx-6">
           {/* hero */}
           <section className="flex flex-col-reverse gap-[74px] md:flex-row items-center justify-between lg:px-[101px] py-12">
             <div className="md:w-1/2 md:text-left space-y-4">
-              <h1 className="lg:text-[48px] text-[20px]  font-bold text-primary font-montserrat">
+              <h2 className="lg:text-[48px] text-[20px]  font-bold text-primary font-montserrat">
                 {" "}
                 Overview
-              </h1>
+              </h2>
               <p className="text-secondary font-montserrat text-[18px] font-medium leading-[140%] tracking-[0.36px] lg:w-[510px]">
                 Founded with a passion for spreading knowledge and promoting the
                 values of Islam, Al Baahith Online Academy offers a diverse
@@ -54,7 +53,7 @@ const About = () => {
             <div className="md:w-1/2 mt-8 md:mt-0 ">
               <img
                 src="/assets/book.png"
-                alt="Coding illustration"
+                alt="book illustration"
                 className="w-full max-w-md mx-auto"
               />
             </div>
@@ -87,7 +86,7 @@ const About = () => {
             <div className="md:w-1/2 mt-8 md:mt-0 mx-6 ">
               <img
                 src="/assets/bookstack.png"
-                alt="Coding illustration"
+                alt="bookstack illustration"
                 className="w-full max-w-md mx-auto"
               />
             </div>
@@ -100,10 +99,10 @@ const About = () => {
           {/* hero */}
           <section className="flex flex-col-reverse gap-[74px] md:flex-row items-center justify-between lg:px-[101px] py-12">
             <div className="md:w-1/2 md:text-left space-y-4">
-              <h1 className="lg:text-[48px] text-[20px]  font-bold text-primary font-montserrat">
+              <h2 className="lg:text-[48px] text-[20px]  font-bold text-primary font-montserrat">
                 {" "}
                 Our Objectives
-              </h1>
+              </h2>
               <p className="text-secondary font-montserrat text-[18px] font-medium leading-[140%] tracking-[0.36px] lg:w-[510px]">
                 Our mission is to empower individuals of all ages and
                 backgrounds to deepen their understanding of Islam and enrich
@@ -122,30 +121,30 @@ const About = () => {
             <div className="md:w-1/2 mt-8 md:mt-0 ">
               <img
                 src="/assets/person.png"
-                alt="Coding illustration"
+                alt="person illustration"
                 className="w-full max-w-md mx-auto"
               />
             </div>
           </section>
         </div>
       </div>
-      <div className="text-primary text-center text-2xl tracking-[0.48px] font-Salsa mx-6 m-auto lg:px-[101px] mb-10">
+      <section className="text-primary text-center text-2xl tracking-[0.48px] font-Salsa mx-6 m-auto lg:px-[101px] mb-10">
         Join us on this enlightening journey of discovery and growth at Al
         Baahith Online Academy. Together, let's embark on a path of learning,
         enlightenment, and spiritual enrichment. We look forward to welcoming
         you to our community and supporting you in your pursuit of knowledge and
         spiritual growth. Welcome to Al Baahith Online Academy!
-      </div>
+      </section>
 
-<div className="my-8">
-<Testimonials/>
-</div>
+      <section className="my-8">
+        <Testimonials />
+      </section>
       {/* section 4 */}
 
-      <div className=" space-y-5 text-center mb-8">
-        <p className=" text-secondary2 font-montserrat text-[22px] font-bold">
+      <section className=" space-y-5 text-center mb-8">
+        <h3 className=" text-secondary2 font-montserrat text-[22px] font-bold">
           Ready to get started?
-        </p>
+        </h3>
         <p className="text-secondary font-montserrat text-[20px] leading-[28px]">
           Embark on Your Quranic Journey Today: <br />
           Let's Start the Path to Knowledge and <br />
@@ -159,12 +158,7 @@ const About = () => {
             Start free trial{" "}
           </Link>
         </div>
-      </div>
-
-
-     
-
-
+      </section>
 
       <Footer />
     </>

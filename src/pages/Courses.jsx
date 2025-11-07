@@ -1,28 +1,22 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import Data from '../components/Data'
-import Navbar from '../components/global/Navbar'
-import Star from "/assets/5star.svg"
+import React from "react";
+import { useParams } from "react-router-dom";
+import Data from "../components/Data";
+import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
-import Quran from "/assets/quranonwood.png";
-import emptyRating from "/assets/emptyRating.svg";
 
 
 const Courses = () => {
-
   const { id } = useParams();
   const course = Data.find((c) => c.id === id);
 
   if (!course) {
-    return <div className='text-9xl'>
-      No Course found
-    </div>
+    return <div className="text-9xl">No Course found</div>;
   }
   return (
-    <div className='courses-page'>
+    <div className="courses-page">
       <Navbar />
-      <div className=''>
-        <div className="mt-[80px] font-montserrat">
+      <div className="">
+        <div className=" font-montserrat">
           <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
             <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
               {course.topTitle}
@@ -31,7 +25,7 @@ const Courses = () => {
               <div className="flex lg:flex-col flex-col-reverse text-secondary gap-2">
                 <p className="flex gap-1">
                   Total Ratings
-                  <img src={Star} alt="" />
+                  <img src="/assets/5star.svg" alt="" />
                 </p>
                 <p>Duration: {course.duration} Months</p>
               </div>
@@ -50,28 +44,10 @@ const Courses = () => {
         </div>
       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div className="lg:flex gap-5 font-montserrat ">
-
         <div className=" bg-white lg:w-3/5 px-[1.8rem] lg:pl-[160px] pr-5 ">
           <div className=" flex justify-center pt-5 pb-10">
-            <img src={Quran} className="w-[13rem] lg:w-[16rem]" alt="" />
+            <img src="/assets/quranonwood.png" className="w-[13rem] lg:w-[16rem]" alt="" />
           </div>
           <div className=" space-y-4">
             <p className="text-primary text-[18px] font-bold">
@@ -81,54 +57,46 @@ const Courses = () => {
               Duration: {course.duration} Months
             </p>
             <div>
+              {Object.keys(course)
+                // find all module keys (module, module2, module3, module4, ...)
+                .filter((key) => key.startsWith("module"))
+                .flatMap((key) => course[key]) // flatten arrays
+                .map((mod, index) => (
+                  <div key={index} className="my-8">
+                    {/* ✅ Module Title */}
+                    <p className="text-primary text-[18px] font-bold my-3">
+                      {mod.moduleTitle1 ||
+                        mod.moduleTitle2 ||
+                        mod.moduleTitle3 ||
+                        mod.moduleTitle4}
+                    </p>
 
+                    {/* ✅ Loop through all paragraph objects (paragraph1, paragraph2, paragraph3...) */}
+                    {Object.keys(mod)
+                      .filter((key) => key.startsWith("paragraph"))
+                      .map((paraKey, i) => {
+                        const para = Array.isArray(mod[paraKey])
+                          ? mod[paraKey][0]
+                          : mod[paraKey];
 
-
-         {Object.keys(course)
-  // find all module keys (module, module2, module3, module4, ...)
-  .filter((key) => key.startsWith("module"))
-  .flatMap((key) => course[key]) // flatten arrays
-  .map((mod, index) => (
-    <div key={index} className="my-8">
-      {/* ✅ Module Title */}
-      <p className="text-primary text-[18px] font-bold my-3">
-        {mod.moduleTitle1 ||
-         mod.moduleTitle2 ||
-         mod.moduleTitle3 ||
-         mod.moduleTitle4}
-      </p>
-
-      {/* ✅ Loop through all paragraph objects (paragraph1, paragraph2, paragraph3...) */}
-      {Object.keys(mod)
-        .filter((key) => key.startsWith("paragraph"))
-        .map((paraKey, i) => {
-          const para = Array.isArray(mod[paraKey])
-            ? mod[paraKey][0]
-            : mod[paraKey];
-
-          return (
-            <div key={i} className="leading-[22px] mt-4">
-              <p className="text-secondary text-[18px] font-semibold leading-[25px] pb-2">
-                {para.firstHeading}
-              </p>
-              <ul className="text-secondary font-medium leading-[22px] list-disc ml-5">
-                <li>{para.firstParagraph}</li>
-                {para.secondParagraph && <li>{para.secondParagraph}</li>}
-              </ul>
-            </div>
-          );
-        })}
-    </div>
-  ))}
-
-
-
-
-
+                        return (
+                          <div key={i} className="leading-[22px] mt-4">
+                            <p className="text-secondary text-[18px] font-semibold leading-[25px] pb-2">
+                              {para.firstHeading}
+                            </p>
+                            <ul className="text-secondary font-medium leading-[22px] list-disc ml-5">
+                              <li>{para.firstParagraph}</li>
+                              {para.secondParagraph && (
+                                <li>{para.secondParagraph}</li>
+                              )}
+                            </ul>
+                          </div>
+                        );
+                      })}
+                  </div>
+                ))}
             </div>
           </div>
-
-
 
           <p className="text-secondary text-[14px] font-semibold leading-[19.3px] py-5">
             {course.underNote}
@@ -148,8 +116,8 @@ const Courses = () => {
 
         {/* right flex */}
 
-        <div className=" lg:w-2/5 flex justify-center items-center flex-col">
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[100px] ">
+        <div className=" lg:w-2/5 flex justify-center items-center lg:items-start flex-col gap-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] lg:mt-[100px] ">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Course Feautures</h1>
             </div>
@@ -216,7 +184,7 @@ const Courses = () => {
 
           {/* second card */}
 
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[30px] mb-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px]">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Student Feedback</h1>
             </div>
@@ -224,7 +192,7 @@ const Courses = () => {
             <div>
               <div className="flex flex-col text-secondary font-medium text-[14.8px] gap-2 bg-[#FBFBFB] p-3.5">
                 <p className="text-black text-[2.93rem] font-semibold">4.9</p>
-                <img src={Star} alt="" className="w-[160px]" />
+                <img src="/assets/5star.svg" alt="" className="w-[160px]" />
               </div>
               <p className="text-secondary text-[14.8px] font-medium ml-2 my-2">
                 Total 18 Ratings
@@ -338,7 +306,8 @@ const Courses = () => {
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
+
                   </p>
                   <p>0</p>
                 </div>
@@ -360,7 +329,8 @@ const Courses = () => {
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
+
                   </p>
                   <p>0</p>
                 </div>
@@ -382,7 +352,7 @@ const Courses = () => {
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
                   </p>
                   <p>0</p>
                 </div>
@@ -392,7 +362,7 @@ const Courses = () => {
 
           {/* third card */}
 
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[30px] mb-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mb-10">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Related Courses</h1>
             </div>
@@ -435,13 +405,9 @@ const Courses = () => {
         </div>
       </div>
 
-
-
-
-
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Courses
+export default Courses;

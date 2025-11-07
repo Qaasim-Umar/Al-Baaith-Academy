@@ -1,10 +1,8 @@
 import React from "react";
 import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
-import Star from "/assets/5star.svg";
-import Quran from "/assets/quranonwood.png";
 import CoursesOutline from "../components/CoursesOutline";
-import emptyRating from "/assets/emptyRating.svg";
+
 
 const Courses = ({ CourseName }) => {
   return (
@@ -19,7 +17,7 @@ const Courses = ({ CourseName }) => {
             <div className="flex lg:flex-col flex-col-reverse text-secondary gap-2">
               <p className="flex gap-1">
                 Total Ratings
-                <img src={Star} alt="" />
+                <img src="/assets/5star.svg" alt="" />
               </p>
               <p>Duration: 24 months</p>
             </div>
@@ -41,7 +39,7 @@ const Courses = ({ CourseName }) => {
 
         <div className=" bg-white lg:w-3/5 px-[1.8rem] lg:pl-[160px] pr-5 ">
           <div className=" flex justify-center pt-5 pb-10">
-            <img src={Quran} className="w-[13rem] lg:w-[16rem]" alt="" />
+            <img src="/assets/quranonwood.png" className="w-[13rem] lg:w-[16rem]" alt="" />
           </div>
           <div className=" space-y-4">
             <p className="text-primary text-[18px] font-bold">
@@ -226,8 +224,8 @@ Commitment to regular attendance and daily memorization practice.
 
         {/* right flex */}
 
-        <div className=" lg:w-2/5 flex justify-center items-center flex-col">
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[100px] ">
+        <div className=" lg:w-2/5 flex justify-center lg:justify-start items-center lg:items-start flex-col gap-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] lg:mt-[100px] ">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Course Feautures</h1>
             </div>
@@ -294,7 +292,7 @@ Commitment to regular attendance and daily memorization practice.
 
           {/* second card */}
 
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[30px] mb-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] ">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Student Feedback</h1>
             </div>
@@ -302,7 +300,7 @@ Commitment to regular attendance and daily memorization practice.
             <div>
               <div className="flex flex-col text-secondary font-medium text-[14.8px] gap-2 bg-[#FBFBFB] p-3.5">
                 <p className="text-black text-[2.93rem] font-semibold">4.9</p>
-                <img src={Star} alt="" className="w-[160px]" />
+                <img src="/assets/5star.svg" alt="" className="w-[160px]" />
               </div>
               <p className="text-secondary text-[14.8px] font-medium ml-2 my-2">
                 Total 18 Ratings
@@ -416,7 +414,7 @@ Commitment to regular attendance and daily memorization practice.
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
                   </p>
                   <p>0</p>
                 </div>
@@ -438,7 +436,7 @@ Commitment to regular attendance and daily memorization practice.
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
                   </p>
                   <p>0</p>
                 </div>
@@ -460,7 +458,7 @@ Commitment to regular attendance and daily memorization practice.
                     </svg>
                   </p>
                   <p>
-                    <img src={emptyRating} alt="" />
+                    <img src="/assets/emptyRating.svg" alt="" />
                   </p>
                   <p>0</p>
                 </div>
@@ -470,7 +468,7 @@ Commitment to regular attendance and daily memorization practice.
 
           {/* third card */}
 
-          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mt-[30px] mb-10">
+          <div className="w-[21rem] bg-white p-3.5 ml-2 rounded-[9px] mb-10">
             <div className="  ">
               <h1 className="font-bold text-[18.2px] my-3">Related Courses</h1>
             </div>

@@ -1,35 +1,36 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bluestyle from "/assets/style.png"
+
 
 const Hero = () => {
   return (
     <div>
-      <div className="flex bg-hero-background pb-[99px] lg:flex-row md:flex-row flex-col lg:h-[90%]  ">
-        <div className="lg:w-[60%] md:w-[60%] relative">
+      <div className="flex bg-hero-background pb-[99px] lg:flex-row md:flex-row flex-col lg:h-[87.5vh] ">
+
+        <div className="lg:w-[60%] md:w-[60%] relative flex justify-center items-center ">
 
           {/* Content for the left half of the screen */}
 
           <img
             className="absolute md:top-[32px] top-[140px] lg:w-[75px] h-[373px] md:-left-1 -left-11 opacity-50 lg:opacity-100"
-            src={bluestyle}
+            src="/assets/style.png"
             alt="logo"
           />
 
-          <div className="font-montserrat flex flex-col md:ml-[100px] lg:ml-[140px] lg:mt-[80px] mt-[140px]  text-center md:text-left lg:text-left ">
+          <div className="  font-montserrat flex flex-col md:ml-[100px] lg:ml-[140px] mt-[150px] lg:mt-0    text-center md:text-left lg:text-left ">
             <div className="font-bold lg:text-[18px] text-[14px] tracking-[0.191px]">
-              <span className="text-primary font-poppins">World Class </span>
-              <span className="text-[#5E6978] font-poppins">Education</span>
+              <span className="text-primary font-poppins text-[17px]">World Class </span>
+              <span className="text-[#5E6978] text-[17px] font-poppins">Education</span>
             </div>
             <div className="mt-[8px] ">
-              <span className="text-[#28374B] font-montserrat lg:text-[44px] text-[28px] font-bold lg:leading-[52px] -tracking-[0.478px] ">
+              <span className="text-[#28374B] font-montserrat lg:text-[44px] text-[30px] font-bold lg:leading-[52px] -tracking-[0.478px] ">
                 Study From Anywhere
               </span>
-              <span className="flex lg:flex-row md:flex-row flex-col items-center lg:gap-2 gap-0 text-[#28374B] font-montserrat lg:text-[44px] text-[28px] font-bold lg:leading-[58px] -tracking-[0.478px]">
+              <span className="flex lg:flex-row md:flex-row justify-center md:justify-start items-center gap-2  text-[#28374B] font-montserrat lg:text-[44px] text-[30px] font-bold lg:leading-[58px] -tracking-[0.478px]">
                 With
                 <img
-                  src="assets/expert.svg"
-                  className="lg:w-[200px] w-[130px] "
+                  src="/assets/expert.svg"
+                  className="lg:w-[200px] w-[151px] "
                   alt=""
                 />
               </span>
@@ -37,7 +38,7 @@ const Hero = () => {
 
             <div>
               <div className="text-[#4D4D4D] lg:mt-[18px] mt-[26px] lg:font-poppins lg:text-[16px] text-[14px]  font-medium leading-[19px] tracking-[0.356px] px-[44px] md:px-0 lg:px-0">
-                <div className="flex gap-1 items-center font-montserrat w-[80%] md:w-full m-auto ">
+                <div className="flex gap-1 items-center  font-montserrat w-[80%]  md:w-[90%]  md:ml-0 m-auto ">
                   <svg
                     width="2"
                     height="33"
@@ -87,13 +88,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="lg:w-[45%] md:w-[45%]">
+        <div className=" md:w-[45%] md:mt-20 lg:mt-0 flex justify-center items-center ">
           {/*Content for the right half of the screen */}
-          <div className=" flex justify-center lg:pr-10  ">
+          <div className=" flex justify-center lg:pr-10   ">
             <img
-              src="assets/Heroimage.png"
-              alt="logo"
-              className="lg:w-[380px] w-[280px] md:mt-[100px] lg:mt-6 "
+              src="/assets/Heroimage.png"
+              alt="Quran globe image"
+              className="lg:w-[380px] w-[280px]  "
             />
           </div>
         </div>

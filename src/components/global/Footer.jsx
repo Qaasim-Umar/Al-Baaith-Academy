@@ -3,13 +3,12 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <div className=" bg-[#267a95] lg:rounded-t-[50px] rounded-t-[14px] lg:px-[118px] px-[23px] pt-[60px] pb-[20px]">
+      <footer className=" bg-[#267a95] lg:rounded-t-[50px] rounded-t-[14px] lg:px-[118px] px-[23px] pt-[60px] pb-[20px]">
         <div className=" flex justify-between lg:gap-7 gap-10 lg:flex-row flex-col  text-[#ffffff]  ">
-         
-          <div className=" lg:w-1/4 ">
-            <p className="pb-[16px] font-lato text-[23.5px] font-bold">
+          <section className=" lg:w-1/4 ">
+            <h2 className="pb-[16px] font-lato text-[23.5px] font-bold">
               About Us
-            </p>
+            </h2>
             <p className="text-[#F1F2F3] font-montserrat font-medium leading-[22.5px] tracking-[0.322px]">
               The academy is an Islamic institution that cultivates
               knowledgeable individuals through Islamic guidelines and
@@ -17,12 +16,12 @@ const Footer = () => {
               techniques created by passionate instructors who are skilled at
               giving classes in a great way.
             </p>
-          </div>
+          </section>
 
-          <div className=" lg:w-1/4">
-            <p className="pb-[16px] font-lato text-[23.5px] font-bold">
+          <section className=" lg:w-1/4">
+            <h2 className="pb-[16px] font-lato text-[23.5px] font-bold">
               Courses
-            </p>
+            </h2>
             <ul className="flex gap-[17.94px] flex-col list-disc lg:list-none pl-[15px] lg:pl-0">
               <li className="text-[#F1F2F3] font-montserrat font-medium leading-[22.54px] tracking-[0.322px]">
                 Quran Memorization
@@ -40,20 +39,18 @@ const Footer = () => {
                 General Islamic Knowledge
               </li>
             </ul>
-          </div>
-
-         
+          </section>
 
           <div className=" lg:w-1/4 ">
-            <p className="pb-[16px] font-lato text-[23.5px] font-bold">
+            <section className="pb-[16px] font-lato text-[23.5px] font-bold">
               Contact Us
-            </p>
+            </section>
             <div className="flex flex-col gap-[24px]">
               <div className="flex gap-4">
                 <div className="flex items-start">
                   <img
-                    src="assets/whatsapp.svg"
-                    alt="logo"
+                    src="/assets/whatsapp.svg"
+                    alt="whatsapp logo"
                     width={29}
                     height={56}
                   />
@@ -74,8 +71,8 @@ const Footer = () => {
               <div className="flex gap-4 ">
                 <div className="flex items-start">
                   <img
-                    src="assets/facebook.svg"
-                    alt="logo"
+                    src="/assets/facebook.svg"
+                    alt="facebook logo"
                     width={29}
                     height={56}
                   />
@@ -94,8 +91,8 @@ const Footer = () => {
               <div className="flex gap-4">
                 <div className="flex items-start">
                   <img
-                    src="assets/mail.svg"
-                    alt="logo"
+                    src="/assets/mail.svg"
+                    alt="gmail logo"
                     width={29}
                     height={56}
                   />
@@ -114,50 +111,41 @@ const Footer = () => {
           </div>
 
           <div className=" lg:w-1/4 ">
-            <p className="pb-[16px] font-lato text-[23.5px] font-bold">
+            <section className="pb-[16px] font-lato text-[23.5px] font-bold">
               Follow Us
-            </p>
-
+            </section>
 
             <div className=" flex space-x-2 flex-wrap  ">
+              <img
+                src="/assets/instagramwhite.svg"
+                alt="white instagram logo"
+                width={39}
+                height={39}
+              />
+              <img
+                src="/assets/whatsappwhite.svg"
+                alt="white whatsapp logo"
+                width={39}
+                height={39}
+              />
 
-              
               <img
-                src="assets/instagramwhite.svg"
-                alt="logo"
+                src="/assets/facebookwhite.svg"
+                alt="white facebook logo"
                 width={39}
                 height={39}
               />
-              <img
-                src="assets/whatsappwhite.svg"
-                alt="logo"
-                width={39}
-                height={39}
-                
-              />
-             
-              <img
-                src="assets/facebookwhite.svg"
-                alt="logo"
-                width={39}
-                height={39}
-              />
-               <img
-                src="assets/x.svg"
-                alt="logo"
-                width={39}
-                height={39}
-               
-              />
-          
+              <a href="https://x.com/al_baahith?s=21">
+                <img src="/assets/x.svg" alt="old twitter logo" width={39} height={39} />
+              </a>
             </div>
           </div>
         </div>
 
         <div className="pt-[67px] text-center text-[#DAF7F9] lg:text-[18.4px] text-[12.5px] font-sourcecodepro">
-          Copyright @ {new Date().getFullYear()}  Al Baahith Academy
+          Copyright @ {new Date().getFullYear()} Al Baahith Academy
         </div>
-      </div>
+      </footer>
     </>
   );
 };

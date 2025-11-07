@@ -96,7 +96,7 @@ html{
 
 /* hero */
 .bg-hero-background {
-  background: url("assets/base1.png") no-repeat;
+  background: url("/assets/base1.png") no-repeat;
 background-size: cover;
 }
 
@@ -196,4 +196,9 @@ select option[disabled]{
     transform: translateX(-50%);
     top: -46px;
   }
+
+  .custom-underline-active::after {
+ 
+  margin-left: 8px;
+}
 }

@@ -81,7 +81,7 @@ const TestimonialCard = () => {
 >
         {testimonials.map((t, idx) => (
     <SwiperSlide key={idx}>
-            {/* Your testimonial card – image, quote, name */}
+            {/* testimonial card – image, quote, name */}
 
             <div className="testimonial-custom p-[24px] flex flex-col justify-between">
               <div className="flex gap-2">

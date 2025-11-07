@@ -36,7 +36,7 @@ const Faq = () => {
 
     return (
         <>
-            <div>
+            <section>
                 <div className="flex flex-col justify-center items-center my-[37px] gap-[19] lg:px-10 ">
                     <h1 className='text-[#28374B] lg:text-[44px] text-[23px] font-sansation font-bold'>Frequently Asked Questions</h1>
                     <p className='text-[#5E6978] font-montserrat lg:w-[50%] w-[85%] font-medium leading-[25.2px] tracking-[0.32px] text-[14px] lg:text-[16px] px-[13px] text-center'>Got questions? We&apos;ve got answers! Explore our Frequently Asked Questions for insights and information.</p>
@@ -46,7 +46,7 @@ const Faq = () => {
 
                     <div className="lg:w-2/5 ">
                         <img
-                            src='/assets/faq.png'
+                            src="/assets/faq.png"
                             alt="logo"
                             width={450}
                             height={56}
@@ -78,7 +78,7 @@ const Faq = () => {
                         </section>
                     </div>
                 </div>
-            </div>
+            </section>
 
 
 

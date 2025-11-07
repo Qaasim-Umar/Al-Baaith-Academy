@@ -1,8 +1,6 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
-import Bullet from "/assets/bullet.svg";
-import Logo from "/assets/logo.svg";
 import emailjs from "@emailjs/browser";
 
 const Admission = () => {
@@ -14,7 +12,7 @@ const Admission = () => {
     emailjs
       .sendForm(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         form.current,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
@@ -30,7 +28,7 @@ const Admission = () => {
       );
   };
 
-    const [countryCode, setCountryCode] = useState("+234");
+  const [countryCode, setCountryCode] = useState("+234");
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const handleCountryCodeChange = (e) => {
@@ -52,11 +50,11 @@ const Admission = () => {
   return (
     <>
       <div className="courses-background lg:pt-0 pt-[100px] ">
-        {/* <Navbar /> */}
+        <Navbar />
 
-        <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem]   m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]">
+        <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem] w-[22rem] sm:w-[25rem] md:w-[40rem] m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]">
           <div className="text-center m-auto flex justify-center items-center space-y-5 flex-col mt-[2.5rem]">
-            <img src={Logo} alt="logo" className="mt-3.5" />
+            <img src="/assets/logo.svg" alt="logo" className="mt-3.5" />
             <p className="text-primary text-monteserrat lg:text-[1.4375rem] font-medium w-[16.2rem] lg:w-[30.1875rem]">
               Please fill out this form, and our admissions team will get back
               to you shortly.
@@ -98,44 +96,44 @@ const Admission = () => {
               </div>
 
               <div className="flex flex-col gap-2 pb-4">
-              
 
 
 
- <label
-        htmlFor="phone"
-        className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-      >
-        Phone Number{" "}
-        <small className="text-[10px] font-normal">
-          (WhatsApp preferably)
-        </small>
-      </label>
 
-      <div className="flex gap-2">
-        {/* Country Code */}
-        <input
-          type="text"
-          name="country_code"
-          value={countryCode}
-          onChange={handleCountryCodeChange}
-          className="lg:w-[5rem] w-1/4 h-[3rem] md:w-1/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
-          placeholder="+234"
-          required
-        />
+                <label
+                  htmlFor="phone"
+                  className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
+                >
+                  Phone Number{" "}
+                  <small className="text-[10px] font-normal">
+                    (WhatsApp preferably)
+                  </small>
+                </label>
 
-        {/* Phone Number */}
-        <input
-          type="tel"
-          name="phoneNumber"
-          value={phoneNumber}
-          onChange={handlePhoneChange}
-          className="lg:w-[26rem] h-[3rem] w-3/4 md:w-4/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
-          placeholder="Phone Number"
-          required
-        />
-      </div>
-              
+                <div className="flex gap-2">
+                  {/* Country Code */}
+                  <input
+                    type="text"
+                    name="country_code"
+                    value={countryCode}
+                    onChange={handleCountryCodeChange}
+                    className="lg:w-[5rem] w-1/4 h-[3rem] md:w-1/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
+                    placeholder="+234"
+                    required
+                  />
+
+                  {/* Phone Number */}
+                  <input
+                    type="tel"
+                    name="phoneNumber"
+                    value={phoneNumber}
+                    onChange={handlePhoneChange}
+                    className="lg:w-[26rem] h-[3rem] w-3/4 md:w-4/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+
 
                 <div className="flex flex-col gap-2 pb-4">
                   <label
@@ -173,7 +171,7 @@ const Admission = () => {
                       <label key={course} className="flex justify-between">
                         <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
                           <div className="flex gap-2">
-                            <img src={Bullet} alt="" />
+                            <img src="/assets/bullet.svg" alt="" />
                             <div className="text-secondary">{course}</div>
                           </div>
                           <input
@@ -247,7 +245,7 @@ const Admission = () => {
                       <label key={day} className="flex justify-between">
                         <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
                           <div className="flex gap-2">
-                            <img src={Bullet} alt="" />
+                            <img src="/assets/bullet.svg" alt="" />
                             <div className="text-secondary">{day}</div>
                           </div>
                           <input type="checkbox" name="days" value={day} />
@@ -271,7 +269,7 @@ const Admission = () => {
                       <label key={means} className="flex justify-between">
                         <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
                           <div className="flex gap-2">
-                            <img src={Bullet} alt="" />
+                            <img src="/assets/bullet.svg" alt="" />
                             <div className="text-secondary">{means}</div>
                           </div>
                           <input type="checkbox" name="means" value={means} />
