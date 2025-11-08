@@ -2,12 +2,17 @@ import React, { useState, useRef } from "react";
 import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
 import emailjs from "@emailjs/browser";
+import { useNavigate } from "react-router-dom";
 
 const Admission = () => {
   const form = useRef();
+   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const applicantName = form.current.fullname.value;
+
 
     emailjs
       .sendForm(
@@ -18,7 +23,7 @@ const Admission = () => {
       )
       .then(
         () => {
-          alert("✅ Form submitted successfully!");
+           navigate("/AdmissionSuccess", { state: { name: applicantName } });
           e.target.reset(); // Clear form after submission
         },
         (error) => {
@@ -73,7 +78,7 @@ const Admission = () => {
                 <input
                   type="text"
                   name="fullname"
-                  className="lg:w-[31.5rem] h-[3rem] p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
+                  className="lg:w-[31.5rem] w-full h-[3rem] p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
                   placeholder=" Full Name"
                   required
                 />

@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Admission from "./pages/Admission";
 import Qmc from "./pages/Qmc";
 import Courses from "./pages/Courses";
+import AdmissionSuccess from "./pages/AdmissionSuccess";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/admission" element={<Admission />} />
           <Route path="/qmc" element={<Qmc />} />
           <Route path="/Courses/:id" element={<Courses />} />
+          <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
         </Routes>
     
     </>
