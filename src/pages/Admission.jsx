@@ -52,7 +52,7 @@ const Admission = () => {
       <div className="courses-background lg:pt-0 pt-[100px] ">
         <Navbar />
 
-        <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem] w-[22rem] md:w-[40rem] m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]">
+        <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem] w-[90%] md:w-[40rem] m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]">
           <div className="text-center m-auto flex justify-center items-center space-y-5 flex-col mt-[2.5rem]">
             <img src="/assets/logo.svg" alt="logo" className="mt-3.5" />
             <p className="text-primary text-monteserrat lg:text-[1.4375rem] font-medium w-[16.2rem] lg:w-[30.1875rem]">
