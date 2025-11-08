@@ -34,7 +34,7 @@ const ChooseUs = () => {
             <ChooseUsCard
               chooseHeading="Evaluation Report
              & Certification"
-              choosePara="Utilize our progressive reporting system to monitor your child's growth on a quarterly basis."
+              choosePara="Utilize our reporting system to monitor your child's growth on a quarterly basis."
               chooseSrc="/assets/report.svg"
             />
           </div>
@@ -60,7 +60,7 @@ const ChooseUs = () => {
             />
             <ChooseUsCard
               chooseHeading="Expert Teachers"
-              choosePara="The academy exclusively hires qualified instructors from the top Islamic universities in the world who are fluent in both Arabic and English."
+              choosePara="The academy hires qualified instructors from the top Islamic universities in the world who are fluent in both Arabic and English."
               chooseSrc="/assets/teacher.svg"
             />
           </div>
