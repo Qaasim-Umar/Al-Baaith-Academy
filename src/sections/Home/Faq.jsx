@@ -108,7 +108,7 @@ const Faq = () => {
         <p className=" text-secondary2 font-montserrat text-[22px] font-bold">
           Ready to get started?
         </p>
-        <p className="text-secondary font-montserrat text-[20px] leading-[28px] md:w-[50%] m-auto pb-5">
+        <p className="text-secondary font-montserrat text-[20px] leading-[28px] px-4 md:w-[50%] m-auto pb-5">
           Embark on Your Quranic Journey Today: Let's Start the Path to
           Knowledge and Spiritual Growth Together!
         </p>
