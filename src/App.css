@@ -2,17 +2,21 @@
 
 @theme {
   --color-primary: #267a95;
-  --color-secondary: #5e6978;
-  --color-secondary2:#28374B;
+  --color-primary-bright: #2dc8d6;
+  --color-primary-light: #e5f4f8;
+  --color-secondary: #4e6878;
+  --color-secondary2: #0f2638;
+  --color-gold: #c9a84c;
+  --color-surface: #f4f9fb;
+  --color-surface2: #eaf5f9;
 
   --font-roboto: "Roboto", sans-serif;
   --font-sourcecodepro: "Source Code Pro", monospace;
   --font-lato: "Lato", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
+  --font-amiri: "Amiri", serif;
   --font-SairaStencilOne: "Saira Stencil One", sans-serif;
   --font-Salsa: "Salsa", cursive;
   --font-poppins: "Poppins", sans-serif;
-   --font-sansation:  "Sansation", sans-serif;
-
-  
+  --font-sansation: "Sansation", sans-serif;
 }

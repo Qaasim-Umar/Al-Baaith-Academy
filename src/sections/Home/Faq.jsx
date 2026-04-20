@@ -1,126 +1,167 @@
-"use client";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import useInView from "../../utils/useInView";
+
+const faqData = [
+  {
+    question: "How much does it cost to study with us?",
+    answer:
+      "Please check our Pricing page for detailed information on course fees. We offer flexible packages to accommodate diverse learning needs, ensuring affordability without compromising quality.",
+  },
+  {
+    question: "Who can apply?",
+    answer:
+      "Anyone eager to deepen their connection with the Quran is welcome to apply! Our courses are designed for learners of all ages and backgrounds, whether you're a beginner or looking to enhance your existing knowledge.",
+  },
+  {
+    question: "What qualification will I get?",
+    answer:
+      "You will receive a Certificate of Completion upon successfully finishing our course. Our curriculum equips you with a solid foundation in all of our featured courses.",
+  },
+  {
+    question: "Are classes one-on-one or group sessions?",
+    answer:
+      "We offer both! Individual one-on-one live video sessions ensure personalized attention, while group sessions are available for a more collaborative learning environment.",
+  },
+];
+
+const FaqItem = ({ question, answer, index, isOpen, onToggle, visible }) => (
+  <div
+    className={`faq-item py-6 anim-ready ${visible ? "anim-visible" : ""}`}
+    style={{ transitionDelay: `${index * 0.1}s` }}
+  >
+    <button className="w-full flex items-start justify-between gap-4 text-left group" onClick={onToggle}>
+      <div className="flex items-start gap-4">
+        <span className="font-SairaStencilOne gradient-text text-[0.9rem] mt-0.5 flex-shrink-0 opacity-70">
+          {String(index + 1).padStart(2, "0")}
+        </span>
+        <h3 className="font-montserrat font-bold text-[#0f2638] text-[15px] leading-snug group-hover:text-[#267a95] transition-colors">
+          {question}
+        </h3>
+      </div>
+      <span
+        className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+          isOpen
+            ? "rotate-45 border-[#267a95] bg-[rgba(38,122,149,0.07)]"
+            : "border-[rgba(38,122,149,0.25)] bg-white"
+        }`}
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+          stroke={isOpen ? "#267a95" : "#4e6878"} strokeWidth="2.5" strokeLinecap="round">
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+      </span>
+    </button>
+    <div className={`faq-answer ${isOpen ? "open" : ""}`}>
+      <p className="font-montserrat text-[#4e6878] text-[14px] leading-[1.85] pl-9 pt-3 pb-1">
+        {answer}
+      </p>
+    </div>
+  </div>
+);
 
 const Faq = () => {
-  // State to manage the visibility of each answer
   const [openIndex, setOpenIndex] = useState(null);
-
-  // Function to toggle the visibility of the answer
-  const toggleAnswer = (index) => {
-    setOpenIndex((prevIndex) => (prevIndex === index ? null : index));
-  };
-
-  // FAQ data containing questions and answers
-  const faqData = [
-    {
-      question: "How much does it cost to study with us ?",
-      answer:
-        "Please check our 'Pricing' page for detailed information on course fees. We offer flexible packages to accommodate diverse learning needs, ensuring affordability without compromising the quality of your Quranic education. Feel free to explore the options that best suit your preferences and goals.",
-    },
-    {
-      question: "Who can apply ?",
-      answer:
-        'Anyone eager to deepen their connection with the Quran is welcome to apply! Our courses are designed for learners of all ages and backgrounds, whether you"re a beginner seeking to start your Quranic journey or someone looking to enhance your existing knowledge. Join us on this enriching experience.',
-    },
-    {
-      question: "What qualification will i get ?",
-      answer:
-        "You will receive a Certificate of Completion upon successfully finishing our course. Our comprehensive curriculum is designed to equip you with a solid foundation in all of our featured courses...",
-    },
-    {
-      question: "What qualification will i get ?",
-      answer:
-        "You will receive a Certificate of Completion upon successfully finishing our course. Our comprehensive curriculum is designed to equip you with a solid foundation in all of our featured courses...",
-    },
-  ];
+  const [leftRef, leftVisible] = useInView();
+  const [rightRef, rightVisible] = useInView();
 
   return (
     <>
-      <section>
-        <div className="flex flex-col justify-center items-center my-[37px] gap-[19] lg:px-10 ">
-          <h2 className="text-[#28374B] lg:text-[44px] text-[23px] font-sansation font-bold">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-[#5E6978] font-montserrat lg:w-[50%] w-[85%] font-medium leading-[25.2px] tracking-[0.32px] text-[14px] lg:text-[16px] px-[13px] text-center">
-            Got questions? We&apos;ve got answers! Explore our Frequently Asked
-            Questions for insights and information.
-          </p>
+      <section className="relative bg-[#f4f9fb] py-24 overflow-hidden">
+        {/* Arabic watermark — السؤال (The Question) */}
+        <div
+          aria-hidden="true"
+          className="arabic-watermark"
+          style={{ fontSize: "clamp(7rem, 18vw, 16rem)", bottom: "-2rem", left: "0", opacity: 0.04 }}
+        >
+          السؤال
         </div>
 
-        <div className="flex justify-center items-center flex-col lg:flex-row gap-8 lg:pr-20">
-            <div className="lg:w-2/5 pr-6 ">
-                <img
-                src="/assets/faq.png"
-                alt="question image"
-                width={450}
-                height={56}
-                />
+        {/* Scattered Arabic letters */}
+        <div aria-hidden="true" className="absolute top-10 right-12 font-amiri text-[3rem] select-none pointer-events-none" style={{ color: "rgba(38,122,149,0.06)", transform: "rotate(12deg)" }}>ب</div>
+        <div aria-hidden="true" className="absolute bottom-10 right-1/3 font-amiri text-[2rem] select-none pointer-events-none" style={{ color: "rgba(38,122,149,0.05)", transform: "rotate(-6deg)" }}>ن</div>
+
+        <div className="site-container relative z-10">
+          <div className="flex flex-col lg:flex-row gap-16">
+            {/* Left */}
+            <div
+              ref={leftRef}
+              className={`lg:w-2/5 flex flex-col gap-6 anim-ready ${leftVisible ? "anim-visible" : ""}`}
+            >
+              <span className="section-label">Questions</span>
+              <h2 className="section-heading">Frequently<br />Asked Questions</h2>
+              <div className="heading-bar" />
+              <p className="font-montserrat text-[#4e6878] text-[15px] leading-[1.8]">
+                Got questions? We've got answers! Explore our FAQ for insights and information about Al Baahith Academy.
+              </p>
+
+              {/* Info card */}
+              <div className="card-light p-6 mt-4 flex flex-col gap-3">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ background: "linear-gradient(135deg, #e5f4f8, #f0fafb)" }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#267a95" strokeWidth="1.8" strokeLinecap="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
+                  </svg>
+                </div>
+                <p className="font-montserrat font-bold text-[#0f2638] text-[15px]">Still have questions?</p>
+                <p className="font-montserrat text-[#4e6878] text-[13px] leading-relaxed">
+                  Contact us on WhatsApp or email — we reply within 24 hours.
+                </p>
+                <Link
+                  to="/Admission"
+                  className="btn-outline text-[13px] px-5 py-2.5 inline-block text-center mt-1"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
 
-          <div className="lg:w-3/5">
-            <section className="bg-[linear-gradient(180deg,rgba(221,247,247,0.5)_0%,rgba(221,247,247,0.5)_100%)] rounded-lg">
-              <div className="space-y-4">
-                {faqData.map((faq, index) => (
-                  <div key={index} className="">
-                    <button
-                      className=" p-[25px] flex items-center justify-between md:w-[600px] lg:w-full w-[330px] "
-                      onClick={() => toggleAnswer(index)}
-                    >
-                      <h1 className=" font-montserrat font-bold text-left  text-[#2E2C2C] leading-[19.5px] ">
-                        {faq.question}
-                      </h1>
-                      <span
-                        className={`text-gray-400 rounded-full ${
-                          openIndex === index ? "transform rotate-45" : ""
-                        }`}
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="w-6 h-6"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                          />
-                        </svg>
-                      </span>
-                    </button>
-                    {openIndex === index && (
-                      <p className=" py-[6px] px-[21px] bg-[#FCFEFD] font-montserrat font-medium text-[14px] leading-[19.6px] tracking-[3%] md:w-[600px] w-[330px] lg:w-full text-[#5E6978]">
-                        {faq.answer}
-                      </p>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </section>
+            {/* Right — accordion */}
+            <div
+              ref={rightRef}
+              className="lg:w-3/5 bg-white rounded-2xl p-8 shadow-sm border border-[rgba(38,122,149,0.08)]"
+            >
+              {faqData.map((faq, i) => (
+                <FaqItem
+                  key={i}
+                  {...faq}
+                  index={i}
+                  isOpen={openIndex === i}
+                  onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                  visible={rightVisible}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <div className=" space-y-5 text-center py-10">
-        <p className=" text-secondary2 font-montserrat text-[22px] font-bold">
-          Ready to get started?
-        </p>
-        <p className="text-secondary font-montserrat text-[20px] leading-[28px] px-4 md:w-[50%] m-auto pb-5">
-          Embark on Your Quranic Journey Today: Let's Start the Path to
-          Knowledge and Spiritual Growth Together!
-        </p>
-        <div className="">
-          <Link
-            to=""
-            className=" m-auto bg-[#267A95] flex w-[196px] h-[60px] items-center justify-center font-montserrat rounded-[5px] text-[18px] text-white font-medium"
-          >
-            Start free trial{" "}
+      {/* CTA band */}
+      <section className="relative py-24 overflow-hidden" style={{ background: "linear-gradient(135deg, #eaf5f9 0%, #f4fafb 50%, #eef8f0 100%)" }}>
+        {/* Bismillah watermark */}
+        <div
+          aria-hidden="true"
+          className="arabic-watermark"
+          style={{ fontSize: "clamp(4rem, 12vw, 10rem)", top: "50%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.06, whiteSpace: "nowrap" }}
+        >
+          بِسْمِ اللَّهِ
+        </div>
+
+        <div className="site-container relative z-10 text-center flex flex-col items-center gap-6">
+          <span className="section-label">Begin Your Journey</span>
+          <h2 className="section-heading max-w-[600px]">Ready to get started?</h2>
+          <p className="font-montserrat text-[#4e6878] text-[16px] leading-[1.8] max-w-[540px]">
+            Embark on Your Quranic Journey Today: Let's Start the Path to Knowledge and Spiritual Growth Together!
+          </p>
+          <Link to="/Admission" className="btn-primary text-[15px] px-10 py-4 flex items-center gap-2.5 mt-2">
+            Start Free Trial
+            <svg width="13" height="12" viewBox="0 0 13 12" fill="none">
+              <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="white" strokeWidth="1.8" />
+            </svg>
           </Link>
         </div>
-      </div>
+      </section>
     </>
   );
 };
