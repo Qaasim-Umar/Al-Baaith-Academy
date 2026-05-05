@@ -21,12 +21,12 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled ? "nav-light shadow-sm" : "nav-transparent"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled ? "nav-light" : "nav-transparent"}`}>
       <div className="site-container flex justify-between items-center h-[70px]">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
-          <img src="/assets/logo.svg" alt="Al Baahith logo" width={52} height={40} />
-          <span className="font-montserrat font-bold text-[#0f2638] text-[14px] hidden sm:block tracking-wide">
+          <img src="/assets/logo.svg" alt="Al Baahith logo" width={48} height={37} />
+          <span className="font-bricolage font-bold text-[#1a1510] text-[15px] hidden sm:block tracking-wide">
             Al Baahith
           </span>
         </Link>
@@ -49,14 +49,14 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Link to="/Admission" className="btn-primary text-[14px] px-6 py-2.5 inline-block">
+          <Link to="/Admission" className="btn-primary text-[13px] px-6 py-2.5 inline-block">
             Register Now
           </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-[#0f2638] text-[1.5rem] p-1"
+          className="lg:hidden text-[#1a1510] text-[1.4rem] p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -67,11 +67,11 @@ const Navbar = () => {
       {/* Mobile menu */}
       <div className={`mobile-menu-light lg:hidden ${menuOpen ? "open" : ""}`}>
         <div className="flex flex-col items-center gap-7 py-10">
-          <NavHashLink to="/" className="nav-link-light text-[17px]">Home</NavHashLink>
-          <NavHashLink to="/about" className="nav-link-light text-[17px]">About Us</NavHashLink>
-          <NavHashLink smooth to="/#featured" className="nav-link-light text-[17px]">Courses</NavHashLink>
-          <NavHashLink to="/Admission" className="nav-link-light text-[17px]">Admission</NavHashLink>
-          <Link to="/Admission" className="btn-primary text-[15px] px-8 py-3 mt-2 inline-block">
+          <NavHashLink to="/" className="nav-link-light text-[16px]">Home</NavHashLink>
+          <NavHashLink to="/about" className="nav-link-light text-[16px]">About Us</NavHashLink>
+          <NavHashLink smooth to="/#featured" className="nav-link-light text-[16px]">Courses</NavHashLink>
+          <NavHashLink to="/Admission" className="nav-link-light text-[16px]">Admission</NavHashLink>
+          <Link to="/Admission" className="btn-primary text-[14px] px-8 py-3 mt-2 inline-block">
             Register Now
           </Link>
         </div>

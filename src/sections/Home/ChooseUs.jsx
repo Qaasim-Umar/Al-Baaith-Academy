@@ -39,18 +39,25 @@ const ChooseUs = () => {
   const [gridRef, gridVisible] = useInView();
 
   return (
-    <section className="relative bg-white py-24 overflow-hidden">
-      {/* Arabic watermark — الحكمة (Wisdom) */}
+    <section className="relative py-24 overflow-hidden" style={{ background: "#f5f3ed" }}>
+      {/* Arabic watermark */}
       <div
         aria-hidden="true"
         className="arabic-watermark"
-        style={{ fontSize: "clamp(8rem, 18vw, 16rem)", top: "50%", right: "-1rem", transform: "translateY(-50%)", opacity: 0.04 }}
+        style={{ fontSize: "clamp(8rem, 18vw, 16rem)", top: "50%", right: "3%", transform: "translateY(-50%)" }}
       >
         الحكمة
       </div>
 
-      {/* Decorative circle accent top-right */}
-      <div className="absolute top-0 right-0 w-[360px] h-[360px] rounded-full border-[40px] border-[rgba(38,122,149,0.04)] translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+      {/* Gold radial glow top-right */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: "500px", height: "500px",
+          background: "radial-gradient(circle at 75% 20%, rgba(180,140,50,0.04) 0%, transparent 65%)",
+        }}
+      />
 
       <div className="site-container relative z-10">
         {/* Heading */}
@@ -63,37 +70,42 @@ const ChooseUs = () => {
             <h2 className="section-heading">Choose Excellence,<br />Embrace Expertise</h2>
             <div className="heading-bar" />
           </div>
-          <p className="font-montserrat text-[#4e6878] text-[15px] leading-[1.8] max-w-[360px] lg:text-right">
+          <p className="font-montserrat text-[#6b5f4e] text-[15px] leading-[1.8] max-w-[360px] lg:text-right">
             Elevate Your Learning Journey with Us!
           </p>
         </div>
 
-        {/* Bento grid */}
-        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Mosaic grid — borderless tiles separated by 1px gold lines */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
+          style={{ background: "rgba(180,140,50,0.1)" }}
+        >
           {features.map((f, i) => (
             <div
               key={i}
-              className={`card-teal p-8 flex flex-col gap-4 min-h-[200px] anim-ready ${gridVisible ? "anim-visible" : ""}`}
-              style={{ transitionDelay: `${i * 0.09}s` }}
+              className={`p-8 flex flex-col gap-4 min-h-[220px] group anim-ready ${gridVisible ? "anim-visible" : ""}`}
+              style={{ background: "#f5f3ed", transitionDelay: `${i * 0.09}s` }}
             >
-              {/* Number */}
-              <span className="font-SairaStencilOne gradient-text text-[2.8rem] leading-none select-none opacity-70">
+              <span
+                className="font-bricolage font-extrabold gradient-text select-none leading-none"
+                style={{ fontSize: "clamp(2.2rem, 4vw, 3rem)", opacity: 0.45 }}
+              >
                 {f.num}
               </span>
 
-              <div>
-                <h3 className="font-montserrat font-bold text-[#0f2638] text-[16px] mb-2.5 leading-snug">
+              <div className="flex-1">
+                <h3 className="font-bricolage font-bold text-[#1a1510] text-[17px] mb-3 leading-snug group-hover:text-[#a67c00] transition-colors duration-200">
                   {f.heading}
                 </h3>
-                <p className="font-montserrat text-[#4e6878] text-[13px] leading-[1.75]">
+                <p className="font-montserrat text-[#6b5f4e] text-[13px] leading-[1.8]">
                   {f.body}
                 </p>
               </div>
 
-              {/* Bottom accent */}
-              <div className="flex gap-1.5 mt-auto pt-2">
-                <div className="h-0.5 w-7 rounded-full bg-[#267a95]" />
-                <div className="h-0.5 w-3.5 rounded-full bg-[rgba(38,122,149,0.3)]" />
+              <div className="flex gap-1.5 mt-2">
+                <div className="h-0.5 w-8 rounded-full bg-[#d4a847] opacity-35 group-hover:opacity-100 group-hover:w-14 transition-all duration-300" />
+                <div className="h-0.5 w-4 rounded-full bg-[rgba(212,168,71,0.15)]" />
               </div>
             </div>
           ))}

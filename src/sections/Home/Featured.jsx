@@ -10,6 +10,7 @@ const programs = [
     rating: "5.00",
     to: "/qmc",
     badge: "Popular",
+    num: "01",
   },
   {
     src: "/assets/tajweed.png",
@@ -18,6 +19,7 @@ const programs = [
     rating: "5.00",
     to: "/courses/Tajweed",
     badge: "Beginner",
+    num: "02",
   },
   {
     src: "/assets/quran.png",
@@ -26,6 +28,7 @@ const programs = [
     rating: "5.00",
     to: "/courses/Quran Recitation Course",
     badge: "Foundation",
+    num: "03",
   },
   {
     src: "/assets/Arabic.png",
@@ -34,58 +37,63 @@ const programs = [
     rating: "5.00",
     to: null,
     badge: "Language",
+    num: "04",
   },
 ];
 
-const ProgramCard = ({ src, title, months, rating, to, badge, delay }) => {
+const ProgramCard = ({ src, title, months, rating, to, badge, num, delay }) => {
   const [ref, inView] = useInView();
 
   const inner = (
     <div
       ref={ref}
-      className={`course-card w-[270px] lg:w-[290px] flex-shrink-0 group anim-ready ${inView ? "anim-visible" : ""}`}
+      className={`course-card group w-full anim-ready ${inView ? "anim-visible" : ""}`}
       style={{ transitionDelay: `${delay}s` }}
     >
       {/* Image */}
-      <div className="relative h-[200px] overflow-hidden">
+      <div className="relative h-[220px] overflow-hidden">
         <img
           src={src}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <div className="course-card-overlay absolute inset-0" />
-        <span className="absolute top-3 right-3 font-montserrat text-[10px] font-bold text-white bg-[rgba(38,122,149,0.85)] backdrop-blur-sm px-3 py-1 rounded-full tracking-widest uppercase">
+        {/* Decorative number */}
+        <span
+          className="absolute top-3 left-4 font-bricolage font-extrabold select-none leading-none"
+          style={{ fontSize: "3rem", color: "rgba(212,168,71,0.22)" }}
+        >
+          {num}
+        </span>
+        <span className="absolute top-4 right-4 font-montserrat text-[10px] font-bold text-[#0c0c0a] bg-[#d4a847] px-3 py-1 rounded-full tracking-widest uppercase">
           {badge}
         </span>
-        {/* Title overlaid on image */}
-        <div className="absolute bottom-0 left-0 right-0 p-4">
-          <h3 className="font-montserrat font-bold text-white text-[16px] leading-snug">{title}</h3>
+        <div className="absolute bottom-0 left-0 right-0 p-5">
+          <h3 className="font-bricolage font-bold text-[#f5ede0] text-[18px] leading-snug">{title}</h3>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="p-4 flex items-center justify-between bg-white">
+      <div className="px-5 py-4 flex items-center justify-between" style={{ background: "#f7f5ef" }}>
         <div className="flex items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="#267a95" strokeWidth="1.8" />
-            <path d="M12 6v6l4 2" stroke="#267a95" strokeWidth="1.8" strokeLinecap="round" />
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="#d4a847" strokeWidth="1.8" />
+            <path d="M12 6v6l4 2" stroke="#d4a847" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
-          <span className="font-montserrat text-[#4e6878] text-[12px] font-semibold">{months} MONTHS</span>
+          <span className="font-montserrat text-[#6b5f4e] text-[11px] font-semibold tracking-wide">{months} MONTHS</span>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5">
           {[...Array(5)].map((_, i) => (
-            <svg key={i} width="11" height="11" viewBox="0 0 24 24" fill="#c9a84c">
+            <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#d4a847">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
           ))}
-          <span className="font-montserrat text-[#4e6878] text-[11px] font-semibold ml-1">({rating})</span>
+          <span className="font-montserrat text-[#6b5f4e] text-[10px] ml-1">({rating})</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="font-montserrat text-[10px] font-bold text-[#267a95] tracking-widest uppercase">
-            Details
-          </span>
-          <svg width="12" height="10" viewBox="0 0 13 12" fill="none">
-            <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="#267a95" strokeWidth="1.5" />
+          <span className="font-montserrat text-[10px] font-bold text-[#d4a847] tracking-widest uppercase">Details</span>
+          <svg width="11" height="9" viewBox="0 0 13 12" fill="none">
+            <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="#d4a847" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
@@ -93,20 +101,20 @@ const ProgramCard = ({ src, title, months, rating, to, badge, delay }) => {
   );
 
   return to
-    ? <Link to={to} className="snap-center flex-shrink-0">{inner}</Link>
-    : <div className="snap-center flex-shrink-0">{inner}</div>;
+    ? <Link to={to} className="block">{inner}</Link>
+    : <div className="block">{inner}</div>;
 };
 
 const Featured = () => {
   const [headingRef, headingVisible] = useInView();
 
   return (
-    <section className="relative bg-[#f4f9fb] py-24 overflow-hidden" id="featured">
-      {/* Arabic watermark — القرآن */}
+    <section className="relative py-24 overflow-hidden" id="featured" style={{ background: "#f7f5ef" }}>
+      {/* Arabic watermark */}
       <div
         aria-hidden="true"
         className="arabic-watermark"
-        style={{ fontSize: "clamp(7rem, 18vw, 15rem)", top: "50%", left: "-1rem", transform: "translateY(-50%)", opacity: 0.04 }}
+        style={{ fontSize: "clamp(7rem, 18vw, 15rem)", top: "50%", left: "3%", transform: "translateY(-50%)" }}
       >
         القرآن
       </div>
@@ -122,20 +130,17 @@ const Featured = () => {
             <h2 className="section-heading">Featured Programs</h2>
             <div className="heading-bar" />
           </div>
-          <p className="font-montserrat text-[#4e6878] text-[15px] leading-[1.8] max-w-[420px] lg:text-right">
+          <p className="font-montserrat text-[#6b5f4e] text-[15px] leading-[1.8] max-w-[420px] lg:text-right">
             Elevate your learning experience with our diverse range of programs designed to inspire, educate, and empower.
           </p>
         </div>
-      </div>
 
-      {/* Full-bleed horizontal scroll — respects container start */}
-      <div
-        className="flex gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide pb-2"
-        style={{ paddingLeft: "max(1.5rem, calc((100vw - 1300px) / 2 + 2.5rem))", paddingRight: "max(1.5rem, calc((100vw - 1300px) / 2 + 2.5rem))" }}
-      >
-        {programs.map((p, i) => (
-          <ProgramCard key={i} {...p} delay={i * 0.1} />
-        ))}
+        {/* 2×2 responsive grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {programs.map((p, i) => (
+            <ProgramCard key={i} {...p} delay={i * 0.1} />
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -7,21 +7,18 @@ const cards = [
     heading: "Books & Library",
     body: "Access a rich digital library of self-study materials to supplement your live classes at any time.",
     tag: "Self-Study",
-    color: "from-[#e5f4f8] to-[#f0fafb]",
   },
   {
     icon: "/assets/id.png",
     heading: "Personalized Learning Portals",
     body: "Our adaptive portals tailor the curriculum to each student's unique pace and learning style.",
     tag: "Adaptive",
-    color: "from-[#edf7ee] to-[#f4fbf5]",
   },
   {
     icon: "/assets/cap.png",
     heading: "Alumni Support",
     body: "Your learning journey with us never truly ends — our dedicated alumni network is always here.",
     tag: "Lifetime",
-    color: "from-[#f0eef8] to-[#f7f6fc]",
   },
 ];
 
@@ -30,12 +27,12 @@ const Facilities = () => {
   const [cardsRef, cardsVisible] = useInView();
 
   return (
-    <section className="relative bg-[#f4f9fb] py-24 overflow-hidden">
-      {/* Arabic watermark — العلم (Knowledge) */}
+    <section className="relative py-24 overflow-hidden" style={{ background: "#faf9f5" }}>
+      {/* Arabic watermark */}
       <div
         aria-hidden="true"
         className="arabic-watermark"
-        style={{ fontSize: "clamp(8rem, 20vw, 18rem)", bottom: "-2rem", left: "-1rem", opacity: 0.04 }}
+        style={{ fontSize: "clamp(8rem, 20vw, 18rem)", bottom: "-2rem", left: "3%" }}
       >
         العلم
       </div>
@@ -51,7 +48,7 @@ const Facilities = () => {
             <h2 className="section-heading">Our Learning<br />Facilities</h2>
             <div className="heading-bar" />
           </div>
-          <p className="font-montserrat text-[#4e6878] text-[15px] leading-[1.8] max-w-[400px] lg:text-right">
+          <p className="font-montserrat text-[#6b5f4e] text-[15px] leading-[1.8] max-w-[400px] lg:text-right">
             Empowering Minds, Nurturing Hearts: Explore the exceptional learning facilities that fuel our educational journey.
           </p>
         </div>
@@ -66,25 +63,34 @@ const Facilities = () => {
             >
               {/* Icon + tag */}
               <div className="flex items-center justify-between">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${card.color} flex items-center justify-center border border-[rgba(38,122,149,0.1)]`}>
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center border border-[rgba(212,168,71,0.15)]"
+                  style={{ background: "rgba(212,168,71,0.06)" }}
+                >
                   <img src={card.icon} alt={card.heading} className="w-8 h-8 object-contain" />
                 </div>
-                <span className="font-montserrat text-[10px] font-bold text-[#267a95] tracking-widest uppercase bg-[rgba(38,122,149,0.07)] border border-[rgba(38,122,149,0.15)] px-3 py-1 rounded-full">
+                <span className="font-montserrat text-[10px] font-bold text-[#d4a847] tracking-widest uppercase bg-[rgba(212,168,71,0.06)] border border-[rgba(212,168,71,0.15)] px-3 py-1 rounded-full">
                   {card.tag}
                 </span>
               </div>
 
               {/* Number watermark */}
-              <span className="font-SairaStencilOne text-[3.5rem] leading-none text-[rgba(38,122,149,0.07)] select-none -mb-2">
+              <span
+                className="font-bricolage font-extrabold leading-none select-none -mb-2"
+                style={{ fontSize: "3.5rem", color: "rgba(212,168,71,0.06)" }}
+              >
                 0{i + 1}
               </span>
 
               <div>
-                <h3 className="font-montserrat font-bold text-[#0f2638] text-[18px] mb-3">{card.heading}</h3>
-                <p className="font-montserrat text-[#4e6878] text-[14px] leading-[1.75]">{card.body}</p>
+                <h3 className="font-bricolage font-bold text-[#1a1510] text-[19px] mb-3 leading-snug">{card.heading}</h3>
+                <p className="font-montserrat text-[#6b5f4e] text-[14px] leading-[1.8]">{card.body}</p>
               </div>
 
-              <div className="h-1 w-12 rounded-full mt-auto" style={{ background: "linear-gradient(90deg, #267a95, #2dc8d6)" }} />
+              <div
+                className="h-px w-full mt-auto"
+                style={{ background: "linear-gradient(90deg, rgba(212,168,71,0.5), transparent)" }}
+              />
             </div>
           ))}
         </div>
