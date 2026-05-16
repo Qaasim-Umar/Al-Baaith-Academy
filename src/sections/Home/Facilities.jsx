@@ -1,56 +1,96 @@
 import React from "react";
-import Facilitiescard from "../../components/modals/FacilitiesCard";
+import useInView from "../../utils/useInView";
+
+const cards = [
+  {
+    icon: "/assets/books.png",
+    heading: "Books & Library",
+    body: "Access a rich digital library of self-study materials to supplement your live classes at any time.",
+    tag: "Self-Study",
+  },
+  {
+    icon: "/assets/id.png",
+    heading: "Personalized Learning Portals",
+    body: "Our adaptive portals tailor the curriculum to each student's unique pace and learning style.",
+    tag: "Adaptive",
+  },
+  {
+    icon: "/assets/cap.png",
+    heading: "Alumni Support",
+    body: "Your learning journey with us never truly ends — our dedicated alumni network is always here.",
+    tag: "Lifetime",
+  },
+];
 
 const Facilities = () => {
+  const [headingRef, headingVisible] = useInView();
+  const [cardsRef, cardsVisible] = useInView();
+
   return (
-    <section className="bg-facilities-background relative pb-[100px] px-[23px]">
-      <div className="flex facilities-position ">
-        <div className="flex justify-around items-center lg:h-[90px] lg:w-[533px] w-[297px] h-[67px] radius-shadow">
-       
-       
-       
+    <section className="relative py-24 overflow-hidden" style={{ background: "linear-gradient(180deg, #E5F5F7 0%, #E8F7E5 100%)" }}>
+      {/* Arabic watermark */}
+      <div
+        aria-hidden="true"
+        className="arabic-watermark"
+        style={{ fontSize: "clamp(8rem, 20vw, 18rem)", bottom: "-2rem", left: "3%" }}
+      >
+        العلم
+      </div>
 
-    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">4.5</span> <span className=" text-secondary text-[12px] font-montserrat">10k reviews</span></div>
-    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">10k</span> <span className=" text-secondary text-[12px] font-montserrat">Enrolled Students</span></div>
-    <div className="flex flex-col text-center"><span className="text-primary font-medium font-SairaStencilOne text-2xl">1k+</span> <span className=" text-secondary text-[12px] font-montserrat">Expert Tutors</span></div>
-      
-          {/* <img src="assets/svg/group1.svg" alt="logo" width={70} height={56} />
-          <img src="assets/svg/group2.svg" alt="logo" width={95} height={56} />
-          <img src="assets/svg/group3.svg" alt="logo" width={70} height={56} /> */}
-
-
-
+      <div className="site-container relative z-10">
+        {/* Heading */}
+        <div
+          ref={headingRef}
+          className={`flex flex-col gap-3 mb-16 anim-ready ${headingVisible ? "anim-visible" : ""}`}
+        >
+          <span className="section-label">What We Offer</span>
+          <h2 className="section-heading">Our Learning <span className="gradient-text">Facilities</span></h2>
+          <p className="font-manrope text-[#4a5f6b] text-[15px] leading-[1.8]">
+            Empowering Minds, Nurturing Hearts: Explore the exceptional learning facilities that fuel our educational journey.
+          </p>
         </div>
-      </div>
 
-      <div className="flex flex-col justify-center items-center lg:pt-[120px] pt-[70px] gap-[19]">
-        <h1 className="text-[#28374B] lg:text-[44px] text-[24px] font-sansation font-bold leading-[120%]">
-          Our Learning Facilities
-        </h1>
-        <p className="text-secondary font-montserrat font-medium leading-[19.2px] tracking-[0.32px] max-w-[540px] text-center mt-2 text-[14px]">
-          Empowering Minds, Nuturing Hearts: Explore The Exceptional Learning
-          Facilities That Fuel Our Educational Journey
-        </p>
-      </div>
-      <div className="flex justify-center lg:gap-[64px] gap-[24px] mt-[54px] md:flex-row flex-col lg:flex-row items-center ">
-        <Facilitiescard
-          heading="Books & Library"
-          preview="You can use the self-study materials in our digital ..."
-          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace."
-          src="/assets/books.png"
-        />
-        <Facilitiescard
-          heading="Personalized Learning Portals"
-          preview="These portals enhance..."
-          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace"
-          src="/assets/id.png"
-        />
-        <Facilitiescard
-          heading="Alumni Support"
-          preview="Your education with us continues with post ..."
-          paragraph="These portals enhance the learning experience by tailoring the curriculum to each student's pace"
-          src="/assets/cap.png"
-        />
+        {/* Cards */}
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {cards.map((card, i) => (
+            <div
+              key={i}
+              className={`card-light p-8 flex flex-col gap-5 anim-ready ${cardsVisible ? "anim-visible" : ""}`}
+              style={{ transitionDelay: `${i * 0.12}s` }}
+            >
+              {/* Icon + tag */}
+              <div className="flex items-center justify-between">
+                <div
+                  className="w-14 h-14 rounded-xl flex items-center justify-center border border-[rgba(38,122,149,0.15)]"
+                  style={{ background: "rgba(38,122,149,0.06)" }}
+                >
+                  <img src={card.icon} alt={card.heading} className="w-8 h-8 object-contain" />
+                </div>
+                <span className="font-manrope text-[10px] font-bold text-[#267A95] tracking-widest uppercase bg-[rgba(38,122,149,0.06)] border border-[rgba(38,122,149,0.15)] px-3 py-1 rounded-full">
+                  {card.tag}
+                </span>
+              </div>
+
+              {/* Number watermark */}
+              <span
+                className="font-bricolage font-extrabold leading-none select-none -mb-2"
+                style={{ fontSize: "3.5rem", color: "rgba(38,122,149,0.06)" }}
+              >
+                0{i + 1}
+              </span>
+
+              <div>
+                <h3 className="font-bricolage font-bold text-[#0f1a1e] text-[19px] mb-3 leading-snug">{card.heading}</h3>
+                <p className="font-manrope text-[#4a5f6b] text-[14px] leading-[1.8]">{card.body}</p>
+              </div>
+
+              <div
+                className="h-px w-full mt-auto"
+                style={{ background: "linear-gradient(90deg, rgba(38,122,149,0.5), transparent)" }}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

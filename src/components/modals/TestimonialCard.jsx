@@ -85,23 +85,23 @@ const TestimonialCard = () => {
 
             <div className="testimonial-custom p-[24px] flex flex-col justify-between">
               <div className="flex gap-2">
-                <div className="w-[52px] h-[52px] bg-primary rounded-[100%] flex justify-center items-center text-white font-bold font-montserrat">
+                <div className="w-[52px] h-[52px] bg-primary rounded-[100%] flex justify-center items-center text-white font-bold font-manrope">
                   {" "}
                   {t.testimonialFirst?.charAt(0).toUpperCase() || ""}
                   {t.testimonialSurname?.charAt(0).toUpperCase() || ""}
                 </div>
 
-                <p className="text-primary font-montserrat font-bold">
+                <p className="text-primary font-manrope font-bold">
                   {t.testimonialFirst} <br /> {t.testimonialSurname}
                 </p>
               </div>
 
               <div>
-                <p className="text-[#5E6978] text-[14px] font-montserrat font-medium leading-[18px] tracking-[0.3px]">
+                <p className="text-[#5E6978] text-[14px] font-manrope font-medium leading-[18px] tracking-[0.3px]">
                   {t.testimonialPara}
                 </p>
 
-                {/* <p className="text-[#5E6978] font-montserrat font-medium leading-[18px] tracking-[0.3px] mt-5">
+                {/* <p className="text-[#5E6978] font-manrope font-medium leading-[18px] tracking-[0.3px] mt-5">
             {testimonialPara2}
           </p>
            */}
@@ -109,7 +109,7 @@ const TestimonialCard = () => {
 
               <div className=" flex justify-between">
                 <div className=" flex space-x-3 ">
-                  <span className="text-[#D9D9D9] font-montserrat text-[10px] font-medium">
+                  <span className="text-[#D9D9D9] font-manrope text-[10px] font-medium">
                     {" "}
                     helpful ?
                   </span>

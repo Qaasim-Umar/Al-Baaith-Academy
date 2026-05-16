@@ -1,69 +1,111 @@
 import React from "react";
-import ChooseUsCard from "../../components/modals/ChooseUsCard";
+import useInView from "../../utils/useInView";
+
+const features = [
+  {
+    num: "01",
+    heading: "World Wide Learning",
+    body: "So many other responsibilities? We provide flexible scheduling for our online Quran courses.",
+  },
+  {
+    num: "02",
+    heading: "Evaluation Report & Certification",
+    body: "Utilize our reporting system to monitor your child's growth on a quarterly basis.",
+  },
+  {
+    num: "03",
+    heading: "Special Classes For Adults",
+    body: "Empowering Adults on their Quranic Journey; tailored classes for a meaningful and convenient learning experience.",
+  },
+  {
+    num: "04",
+    heading: "24/7 Support",
+    body: "We offer top online classes for learning the Arabic language and the Holy Quran at any time, 24/7.",
+  },
+  {
+    num: "05",
+    heading: "Individual Classes",
+    body: "We provide one-on-one live video sessions so you can study better in real time.",
+  },
+  {
+    num: "06",
+    heading: "Expert Teachers",
+    body: "Qualified instructors from top Islamic universities, fluent in both Arabic and English.",
+  },
+];
 
 const ChooseUs = () => {
+  const [headingRef, headingVisible] = useInView();
+  const [gridRef, gridVisible] = useInView();
+
   return (
-    <section className="chooseus-bg h-fit pb-5 lg:px-[100px]">
-      <div className="flex flex-col justify-center items-center  gap-[19]">
-        <h2 className="text-[#28374B] mt-[62px] font-sansation font-bold lg:text-[44px] leading-[120%] text-[24px] ">
-          Why Choose Us?
-        </h2>
-        <p className="text-[#5E6978] font-montserrat font-medium leading-[19.2px] tracking-[0.32px] text-center text-[14px] ">
-          Choose Excellence, Embrace Expertise – Elevate Your <br /> Learning
-          Journey with Us!
-        </p>
+    <section className="relative py-24 overflow-hidden" style={{ background: "#edf3f5" }}>
+      {/* Arabic watermark */}
+      <div
+        aria-hidden="true"
+        className="arabic-watermark"
+        style={{ fontSize: "clamp(8rem, 18vw, 16rem)", top: "50%", right: "3%", transform: "translateY(-50%)" }}
+      >
+        الحكمة
       </div>
 
-      <div className="flex mt-[37px] flex-col items-center lg:flex-row ">
-        <div className="lg:w-2/5">
-          <img
-            src="/assets/question.png"
-            alt="man and question mark"
-            className="lg:h-[530px] md:h-[470px]"
-          />
+      {/* Teal radial glow top-right */}
+      <div
+        aria-hidden="true"
+        className="absolute top-0 right-0 pointer-events-none"
+        style={{
+          width: "500px", height: "500px",
+          background: "radial-gradient(circle at 75% 20%, rgba(38,122,149,0.04) 0%, transparent 65%)",
+        }}
+      />
+
+      <div className="site-container relative z-10">
+        {/* Heading */}
+        <div
+          ref={headingRef}
+          className={`flex flex-col gap-3 mb-16 anim-ready ${headingVisible ? "anim-visible" : ""}`}
+        >
+          <span className="section-label">Why Choose Us</span>
+          <h2 className="section-heading">Choose Excellence, <span className="gradient-text">Embrace Expertise</span></h2>
+          <p className="font-manrope text-[#4a5f6b] text-[15px] leading-[1.8]">
+            Elevate Your Learning Journey with Us!
+          </p>
         </div>
 
-        <div className="lg:w-3/5  flex flex-col items-center lg:flex-row gap-[16px] m-auto px-6">
-          <div className="flex gap-[16px] mt-[45px] lg:flex-col lg:pl-10">
-            <ChooseUsCard
-              chooseHeading="World wide learning"
-              choosePara="So many other responsibilities?
-               We provide flexible scheduling for our online Quran courses."
-              chooseSrc="/assets/globe.svg"
-            />
-            <ChooseUsCard
-              chooseHeading="Evaluation Report
-             & Certification"
-              choosePara="Utilize our reporting system to monitor your child's growth on a quarterly basis."
-              chooseSrc="/assets/report.svg"
-            />
-          </div>
+        {/* Mosaic grid — borderless tiles separated by 1px teal lines */}
+        <div
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
+          style={{ background: "rgba(38,122,149,0.1)" }}
+        >
+          {features.map((f, i) => (
+            <div
+              key={i}
+              className={`p-8 flex flex-col gap-4 min-h-[220px] group anim-ready ${gridVisible ? "anim-visible" : ""}`}
+              style={{ background: "#edf3f5", transitionDelay: `${i * 0.09}s` }}
+            >
+              <span
+                className="font-bricolage font-extrabold gradient-text select-none leading-none"
+                style={{ fontSize: "clamp(2.2rem, 4vw, 3rem)", opacity: 0.45 }}
+              >
+                {f.num}
+              </span>
 
-          <div className="flex gap-[16px] lg:flex-col">
-            <ChooseUsCard
-              chooseHeading="Special Classes For Adults"
-              choosePara="Empowering Adults on their Quranic Journey; Tailored classes for a meaningful and convenient learning experience."
-              chooseSrc="/assets/classes.svg"
-            />
-            <ChooseUsCard
-              chooseHeading="24/7 Support"
-              choosePara="We offer the top online classes for learning the Arabic language and the Holy Quran at any time, 24/7."
-              chooseSrc="/assets/clock.svg"
-            />
-          </div>
+              <div className="flex-1">
+                <h3 className="font-bricolage font-bold text-[#0f1a1e] text-[17px] mb-3 leading-snug group-hover:text-[#1a5f78] transition-colors duration-200">
+                  {f.heading}
+                </h3>
+                <p className="font-manrope text-[#4a5f6b] text-[13px] leading-[1.8]">
+                  {f.body}
+                </p>
+              </div>
 
-          <div className="flex gap-[16px] lg:mt-[45px] lg:flex-col">
-            <ChooseUsCard
-              chooseHeading="Individual Classes"
-              choosePara="We provide one-on-one live video sessions so you can study better in real time and get your questions addressed right away."
-              chooseSrc="/assets/students.svg"
-            />
-            <ChooseUsCard
-              chooseHeading="Expert Teachers"
-              choosePara="The academy hires qualified instructors from the top Islamic universities in the world who are fluent in both Arabic and English."
-              chooseSrc="/assets/teacher.svg"
-            />
-          </div>
+              <div className="flex gap-1.5 mt-2">
+                <div className="h-0.5 w-8 rounded-full bg-[#267A95] opacity-35 group-hover:opacity-100 group-hover:w-14 transition-all duration-300" />
+                <div className="h-0.5 w-4 rounded-full bg-[rgba(38,122,149,0.15)]" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

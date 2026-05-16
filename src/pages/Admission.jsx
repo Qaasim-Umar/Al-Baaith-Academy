@@ -6,29 +6,73 @@ import { useNavigate } from "react-router-dom";
 
 const Admission = () => {
   const form = useRef();
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    setIsSubmitting(true);
     const applicantName = form.current.fullname.value;
 
+    // Debug: Show all environment variables
+    console.log("=== EMAILJS DEBUG INFO ===");
+    console.log("All env vars:", import.meta.env);
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    console.log("Service ID:", serviceId);
+    console.log("Template ID:", templateId);
+    console.log("Public Key:", publicKey ? publicKey.substring(0, 10) + "..." : "NOT SET");
+
+    if (!serviceId || !templateId || !publicKey) {
+      setIsSubmitting(false);
+      alert("❌ EmailJS configuration missing. Please check environment variables.");
+      console.error("Missing environment variables:", {
+        serviceId: !!serviceId,
+        templateId: !!templateId,
+        publicKey: !!publicKey
+      });
+      return;
+    }
+
+    // Combine country code and phone number
+    const fullPhoneNumber = `${countryCode}${phoneNumber}`;
+    
+    // Create a hidden input for the full phone number if it doesn't exist
+    if (!form.current.full_phone) {
+      const phoneInput = document.createElement('input');
+      phoneInput.type = 'hidden';
+      phoneInput.name = 'full_phone';
+      form.current.appendChild(phoneInput);
+    }
+    form.current.full_phone.value = fullPhoneNumber;
+
+    // Debug: Show form data
+    console.log("Form data before submission:");
+    const formData = new FormData(form.current);
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+
+    console.log("Attempting to send email...");
 
     emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
+      .sendForm(serviceId, templateId, form.current, publicKey)
       .then(
-        () => {
-           navigate("/AdmissionSuccess", { state: { name: applicantName } });
+        (response) => {
+          console.log("✅ Email sent successfully:", response);
+          setIsSubmitting(false);
+          navigate("/AdmissionSuccess", { state: { name: applicantName } });
           e.target.reset(); // Clear form after submission
+          setPhoneNumber(""); // Reset phone state
         },
         (error) => {
-          alert("❌ Failed to send form. Please try again later.");
-          console.error(error.text);
+          console.error("❌ EmailJS Error Details:", error);
+          console.error("Error status:", error.status);
+          console.error("Error text:", error.text);
+          setIsSubmitting(false);
+          alert(`❌ Failed to send form: ${error.text || 'Unknown error'} (Status: ${error.status || 'N/A'}). Please check console for details.`);
         }
       );
   };
@@ -52,275 +96,218 @@ const Admission = () => {
     }
   };
 
+  const inputStyles = "w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#267A95] focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white";
+  const labelStyles = "block text-sm font-semibold text-gray-700 mb-2 font-manrope";
+
   return (
     <>
-      <div className="courses-background lg:pt-0 pt-[100px] ">
+      <div className="min-h-screen bg-[#f5f9fa] relative selection:bg-[#267A95] selection:text-white flex flex-col">
+        {/* Subtle decorative background gradient instead of an image */}
+        <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#267A95]/10 to-transparent pointer-events-none"></div>
+        
         <Navbar />
 
-        <div className="rounded-t-[2.5rem] bg-white lg:w-[44rem] w-[90%] md:w-[40rem] m-auto mb-[2.5rem] lg:px-[6.1rem] px-6 md:mt-[5rem] lg:mt-[8rem]">
-          <div className="text-center m-auto flex justify-center items-center space-y-5 flex-col mt-[2.5rem]">
-            <img src="/assets/logo.svg" alt="logo" className="mt-3.5" />
-            <p className="text-primary text-monteserrat lg:text-[1.4375rem] font-medium w-[16.2rem] lg:w-[30.1875rem]">
-              Please fill out this form, and our admissions team will get back
-              to you shortly.
-            </p>
-          </div>
-
-          <div className="lg:mt-[3.5rem] mt-3">
-            <form ref={form} onSubmit={handleSubmit}>
-              <div className="flex flex-col gap-2 pb-4">
-                <label
-                  htmlFor="fullname"
-                  className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                >
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  name="fullname"
-                  className="lg:w-[31.5rem] w-full h-[3rem] p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                  placeholder=" Full Name"
-                  required
-                />
+        <div className="relative z-10 flex-grow py-8 px-4 sm:px-6 lg:px-8 pt-[120px] lg:pt-[140px] flex items-center justify-center">
+          <div className="max-w-6xl w-full mx-auto bg-white rounded-[2rem] shadow-2xl overflow-hidden mb-12 flex flex-col lg:flex-row border border-[rgba(38,122,149,0.1)]">
+            
+            {/* Left Pane - Branding & Welcome (Visible mainly on Desktop) */}
+            <div className="lg:w-2/5 relative overflow-hidden bg-[linear-gradient(135deg,#267A95_0%,#1a5f78_100%)] p-10 lg:p-14 text-white flex flex-col justify-between">
+              {/* Decorative shapes */}
+              <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-white opacity-5 blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-80 h-80 rounded-full bg-[#3a9bb8] opacity-20 blur-3xl"></div>
+              
+              <div className="relative z-10">
+                <h1 className="text-3xl lg:text-5xl font-extrabold font-bricolage mb-6 leading-tight">
+                  Begin Your <br/>Journey With Us
+                </h1>
+                <p className="text-[#e0f2f7] text-lg font-manrope leading-relaxed max-w-md">
+                  Join Al-Baaith Academy to discover the best way to master Quranic recitation, Tajweed, and Islamic knowledge.
+                </p>
               </div>
 
-              <div className="flex flex-col gap-2 pb-4">
-                <label
-                  htmlFor="email"
-                  className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  className="lg:w-[31.5rem] h-[3rem] p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                  placeholder=" Email"
-                  required
-                />
+              <div className="relative z-10 mt-12 hidden lg:block">
+                <div className="flex items-center gap-4 text-sm font-medium text-[#e0f2f7] bg-black/10 p-4 rounded-xl backdrop-blur-sm border border-white/10">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#2DC8D6]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  Your information is secure and will only be used for admission purposes.
+                </div>
               </div>
+            </div>
 
-              <div className="flex flex-col gap-2 pb-4">
-                <label
-                  htmlFor="phone"
-                  className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                >
-                  Phone Number{" "}
-                  <small className="text-[10px] font-normal">
-                    (WhatsApp preferably)
-                  </small>
-                </label>
-
-                <div className="flex gap-2">
-                  {/* Country Code */}
-                  <input
-                    type="text"
-                    name="country_code"
-                    value={countryCode}
-                    onChange={handleCountryCodeChange}
-                    className="lg:w-[5rem] w-1/4 h-[3rem] md:w-1/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
-                    placeholder="+234"
-                    required
-                  />
-
-                  {/* Phone Number */}
-                  <input
-                    type="tel"
-                    name="phoneNumber"
-                    value={phoneNumber}
-                    onChange={handlePhoneChange}
-                    className="lg:w-[26rem] h-[3rem] w-3/4 md:w-4/5 p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)] focus:outline-none focus:ring-1 focus:ring-primary"
-                    placeholder="Phone Number"
-                    required
-                  />
-                </div>
-
-                <div className="flex flex-col gap-2 pb-4">
-                  <label
-                    htmlFor="gender"
-                    className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                  >
-                    Gender
-                  </label>
-                  <select
-                    name="gender"
-                    className="appearance-none lg:w-[31.5rem] h-[3rem] py-1 px-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select your gender
-                    </option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Prefer not to say">Prefer not to say</option>
-                  </select>
-                </div>
-
-                <div className="font-montserrat">
-                  <label className="text-primary font-semibold text-[14px] lg:text-[16px]">
-                    Select the Course(s) you're applying for *
-                  </label>
-                  <div className="lg:w-[23.1rem] p-3 rounded-[5.337px] border-[0.667px] border-[#267A95] shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]">
-                    {[
-                      "Quran Reitation",
-                      "Tajweed",
-                      "Quran Memorization",
-                      "Modern Standard Arabic",
-                      "General Islamic Knowledge",
-                    ].map((course) => (
-                      <label key={course} className="flex justify-between">
-                        <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
-                          <div className="flex gap-2">
-                            <img src="/assets/bullet.svg" alt="" />
-                            <div className="text-secondary">{course}</div>
-                          </div>
-                          <input
-                            type="checkbox"
-                            name="courses"
-                            value={course}
-                          />
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2 pb-4 mt-3">
-                  <label
-                    htmlFor="noOfClasses"
-                    className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                  >
-                    Preferred number of classes per week
-                  </label>
-                  <select
-                    name="noOfClasses"
-                    className="appearance-none lg:w-[31.5rem] h-[3rem] py-1 px-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select your preferred number of classes per week
-                    </option>
-                    <option value="1 Class(es)">1 Class</option>
-                    <option value="2 Class(es)">2 Classes</option>
-                    <option value="3 Class(es)">3 Classes</option>
-                    <option value="4 Class(es)">4 Classes</option>
-                  </select>
-                </div>
-
-                <div className="flex flex-col gap-2 pb-4">
-                  <label
-                    htmlFor="classDuration"
-                    className="text-primary font-montserrat font-semibold text-[14px] lg:text-[16px]"
-                  >
-                    Preferred Class duration
-                  </label>
-                  <select
-                    name="classDuration"
-                    className="appearance-none lg:w-[31.5rem] h-[3rem] py-1 px-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                    required
-                  >
-                    <option value="" disabled selected hidden>
-                      Please select your preferred class duration
-                    </option>
-                    <option value="30 mins">30 mins</option>
-                    <option value="1 hour">1 hour</option>
-                    <option value="2 hours">2 hours</option>
-                  </select>
-                </div>
-
-                <div className="font-montserrat">
-                  <label className="text-primary font-semibold text-[14px] lg:text-[16px]">
-                    Select preferred day(s)
-                  </label>
-                  <div className="lg:w-[23.1rem] p-3 rounded-[5.337px] border-[0.667px] border-[#267A95] shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]">
-                    {[
-                      "Monday",
-                      "Tuesday",
-                      "Wednesday",
-                      "Thursday",
-                      "Friday",
-                      "Saturday",
-                      "Sunday",
-                    ].map((day) => (
-                      <label key={day} className="flex justify-between">
-                        <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
-                          <div className="flex gap-2">
-                            <img src="/assets/bullet.svg" alt="" />
-                            <div className="text-secondary">{day}</div>
-                          </div>
-                          <input type="checkbox" name="days" value={day} />
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="font-montserrat mt-3">
-                  <label className="text-primary font-semibold text-[14px] lg:text-[16px]">
-                    How did you learn about us?
-                  </label>
-                  <div className="lg:w-[23.1rem] p-3 rounded-[5.337px] border-[0.667px] border-[#267A95] shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]">
-                    {[
-                      "Google",
-                      "Social media",
-                      "Recommendation from friend",
-                      "Others",
-                    ].map((means) => (
-                      <label key={means} className="flex justify-between">
-                        <div className="flex justify-between items-center bg-[#FBFBFB] border-b-[1px] border-b-[#F1F2F3] w-full p-3">
-                          <div className="flex gap-2">
-                            <img src="/assets/bullet.svg" alt="" />
-                            <div className="text-secondary">{means}</div>
-                          </div>
-                          <input type="checkbox" name="means" value={means} />
-                        </div>
-                      </label>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2 pb-4 mt-3">
-                  <label
-                    htmlFor="message"
-                    className="text-primary font-montserrat font-semibold flex items-center gap-1 text-[14px] lg:text-[16px]"
-                  >
-                    Your Message{" "}
-                    <small className="text-[10px] font-normal">
-                      (Optional)
-                    </small>
-                  </label>
-                  <textarea
-                    name="message"
-                    className="lg:w-[23.1rem] h-[5.75rem] p-4 rounded-[0.25rem] border-[0.667px] border-primary shadow-[0.667px_3.335px_6.671px_0_rgba(0,0,0,0.20)]"
-                  />
-                </div>
-
-                <div className="space-y-3">
-                  <p className="lg:text-[14px] text-[12px] text-primary font-semibold">
-                    Your contact details will only be used for the admissions
-                    process.
+            {/* Right Pane - Form */}
+            <div className="lg:w-3/5 bg-white">
+              <div className="p-8 sm:p-12 lg:p-14">
+                <div className="mb-10 lg:hidden">
+                  <h2 className="text-[#267A95] text-3xl font-extrabold font-bricolage mb-3">Admission Application</h2>
+                  <p className="text-gray-600 text-base font-manrope">
+                    Please fill out this form, and our admissions team will get back to you shortly.
                   </p>
-
-                  <div className="flex items-center gap-2">
-                    <input type="checkbox" name="agree" required />
-                    <p className="text-primary lg:text-[14px] text-[12px] font-semibold">
-                      I agree with the{" "}
-                      <a href="" className="text-[#D84949]">
-                        terms and condition
-                      </a>{" "}
-                      of this academy
-                    </p>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="mb-7 h-[2.5rem] w-[8rem] flex justify-center items-center rounded-[3.39px] bg-[linear-gradient(92deg,#267A95_4.75%,#2DC8D6_100%)] shadow-[0.847px_4.237px_8.474px_0_rgba(38,122,149,0.15)] p-4 text-white font-bold"
-                  >
-                    Submit
-                  </button>
                 </div>
+                
+                <form ref={form} onSubmit={handleSubmit}>
+                  <div className="space-y-10">
+                    
+                    {/* 1. Personal Details */}
+                    <section>
+                      <h2 className="text-xl font-bold text-[#267A95] border-b border-gray-200 pb-3 mb-6 font-bricolage flex items-center gap-3">
+                        <span className="bg-[#267A95]/10 text-[#267A95] w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+                        Personal Details
+                      </h2>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <label htmlFor="fullname" className={labelStyles}>Full Name *</label>
+                          <input type="text" name="fullname" className={inputStyles} placeholder="Full Name" required />
+                        </div>
+                        
+                        <div>
+                          <label htmlFor="email" className={labelStyles}>Email Address *</label>
+                          <input type="email" name="email" className={inputStyles} placeholder="Email" required />
+                        </div>
+
+                        <div className="md:col-span-2">
+                          <label htmlFor="phone" className={labelStyles}>
+                            Phone Number * <span className="text-xs font-normal text-gray-500">(WhatsApp preferably)</span>
+                          </label>
+                          <div className="flex gap-3">
+                            <input type="text" name="country_code" value={countryCode} onChange={handleCountryCodeChange} className={`${inputStyles} w-24 sm:w-28 text-center font-medium`} placeholder="+234" required />
+                            <input type="tel" name="phoneNumber" value={phoneNumber} onChange={handlePhoneChange} className={`${inputStyles} flex-grow`} placeholder="Phone Number" required />
+                          </div>
+                        </div>
+
+                        <div className="md:col-span-2">
+                          <label htmlFor="gender" className={labelStyles}>Gender *</label>
+                          <select name="gender" className={inputStyles} required defaultValue="">
+                            <option value="" disabled hidden>Please select your gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Prefer not to say">Prefer not to say</option>
+                          </select>
+                        </div>
+                      </div>
+                    </section>
+
+                    {/* 2. Course Preferences */}
+                    <section>
+                      <h2 className="text-xl font-bold text-[#267A95] border-b border-gray-200 pb-3 mb-6 font-bricolage flex items-center gap-3">
+                        <span className="bg-[#267A95]/10 text-[#267A95] w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+                        Course Preferences
+                      </h2>
+
+                      <div className="space-y-8">
+                        <div>
+                          <label className={labelStyles}>Select the Course(s) you're applying for *</label>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                            {["Quran Recitation", "Tajweed", "Quran Memorization", "Modern Standard Arabic", "General Islamic Knowledge"].map((course) => (
+                              <label key={course} className="flex items-center p-4 border border-gray-200 rounded-xl cursor-pointer hover:bg-[#267A95]/5 hover:border-[#267A95] transition-all has-[:checked]:bg-[#267A95]/10 has-[:checked]:border-[#267A95]">
+                                <input type="checkbox" name="courses" value={course} className="w-5 h-5 text-[#267A95] border-gray-300 rounded focus:ring-[#267A95]" />
+                                <span className="ml-3 text-gray-700 font-medium text-sm">{course}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <label htmlFor="noOfClasses" className={labelStyles}>Classes per week *</label>
+                            <select name="noOfClasses" className={inputStyles} required defaultValue="">
+                              <option value="" disabled hidden>Select classes</option>
+                              <option value="1 Class(es)">1 Class</option>
+                              <option value="2 Class(es)">2 Classes</option>
+                              <option value="3 Class(es)">3 Classes</option>
+                              <option value="4 Class(es)">4 Classes</option>
+                            </select>
+                          </div>
+
+                          <div>
+                            <label htmlFor="classDuration" className={labelStyles}>Class duration *</label>
+                            <select name="classDuration" className={inputStyles} required defaultValue="">
+                              <option value="" disabled hidden>Select duration</option>
+                              <option value="30 mins">30 mins</option>
+                              <option value="1 hour">1 hour</option>
+                              <option value="2 hours">2 hours</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className={labelStyles}>Select preferred day(s) *</label>
+                          <div className="flex flex-wrap gap-3 mt-3">
+                            {["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].map((day) => (
+                              <label key={day} className="flex items-center px-4 py-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-[#267A95]/5 hover:border-[#267A95] transition-all has-[:checked]:bg-[#267A95]/10 has-[:checked]:border-[#267A95]">
+                                <input type="checkbox" name="days" value={day} className="w-4 h-4 text-[#267A95] border-gray-300 rounded focus:ring-[#267A95]" />
+                                <span className="ml-2 text-gray-700 font-medium text-sm">{day}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                    {/* 3. Additional Information */}
+                    <section>
+                      <h2 className="text-xl font-bold text-[#267A95] border-b border-gray-200 pb-3 mb-6 font-bricolage flex items-center gap-3">
+                        <span className="bg-[#267A95]/10 text-[#267A95] w-8 h-8 rounded-full flex items-center justify-center text-sm">3</span>
+                        Additional Information
+                      </h2>
+
+                      <div className="space-y-6">
+                        <div>
+                          <label className={labelStyles}>How did you learn about us?</label>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+                            {["Google", "Social media", "Recommendation from friend", "Others"].map((means) => (
+                              <label key={means} className="flex items-center p-3 border border-gray-200 rounded-xl cursor-pointer hover:bg-[#267A95]/5 hover:border-[#267A95] transition-all has-[:checked]:bg-[#267A95]/10 has-[:checked]:border-[#267A95]">
+                                <input type="checkbox" name="means" value={means} className="w-4 h-4 text-[#267A95] border-gray-300 rounded focus:ring-[#267A95]" />
+                                <span className="ml-3 text-gray-700 font-medium text-sm">{means}</span>
+                              </label>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <label htmlFor="message" className={labelStyles}>
+                            Your Message <span className="text-xs font-normal text-gray-500">(Optional)</span>
+                          </label>
+                          <textarea name="message" rows="3" className={`${inputStyles} resize-none`} placeholder="Your Message"></textarea>
+                        </div>
+                      </div>
+                    </section>
+
+                    {/* Submit Section */}
+                    <div className="pt-8 mt-8 border-t border-gray-200">
+                      <label className="flex items-start gap-3 mb-8 cursor-pointer group">
+                        <div className="flex items-center h-5 mt-0.5">
+                          <input type="checkbox" name="agree" required className="w-5 h-5 text-[#267A95] border-gray-300 rounded focus:ring-[#267A95]" />
+                        </div>
+                        <p className="text-gray-600 text-sm font-medium group-hover:text-gray-900 transition-colors">
+                          I agree with the <a href="#" className="text-[#D84949] hover:underline hover:text-red-700">terms and condition</a> of this academy
+                        </p>
+                      </label>
+
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full py-4 bg-[linear-gradient(135deg,#267A95_0%,#3a9bb8_100%)] text-white text-lg font-bold rounded-xl shadow-[0_6px_24px_rgba(38,122,149,0.28)] hover:shadow-[0_10px_36px_rgba(38,122,149,0.45)] transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Submitting...
+                          </>
+                        ) : (
+                          "Submit Application"
+                        )}
+                      </button>
+                    </div>
+
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
 

@@ -35,11 +35,11 @@ const FacilitiesCard = ({ src, paragraph, preview, heading }) => {
         />
 
         <div className="flex flex-col gap-[8px] mt-4">
-          <h2 className="  group-hover:text-white lg:text-[24px] text-[20px] text-[#5E6978D9] font-montserrat font-bold text-center">
+          <h2 className="  group-hover:text-white lg:text-[24px] text-[20px] text-[#5E6978D9] font-manrope font-bold text-center">
             {heading}
           </h2>
 
-          <p className=" group-hover:text-white text-[#5E6978] text-center font-montserrat lg:text-[14px] text-[12px] font-medium tracking-[0.28px]">
+          <p className=" group-hover:text-white text-[#5E6978] text-center font-manrope lg:text-[14px] text-[12px] font-medium tracking-[0.28px]">
             {preview}
           </p>
 
@@ -47,7 +47,7 @@ const FacilitiesCard = ({ src, paragraph, preview, heading }) => {
             className="
             text-[#5E6978]
             text-center
-            font-montserrat
+            font-manrope
             lg:text-[14px]
             text-[12px]
             font-medium

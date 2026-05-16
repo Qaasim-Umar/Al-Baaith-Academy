@@ -1,92 +1,88 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { HiBars3 } from "react-icons/hi2";
 import { FaTimes } from "react-icons/fa";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
 import "../../global.css";
 
-const Navbar = ({ scrollToSection, props }) => {
-  const [state, setState] = useState(true);
-  const handleClick = () => {
-    setState(!state);
+const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => { setMenuOpen(false); }, [location]);
+
+  const isActive = (path) => {
+    // For hash links on home page, don't mark as active
+    if (path.includes('#')) return false;
+    return location.pathname === path;
   };
+
   return (
-    <nav className="bg-[#E6F6EF] flex justify-between lg:px-20 px-8 py-3 items-center shadow-[0.667px_1.333px_5.333px_0px_rgba(38,122,149,0.05)] fixed top-0 right-0 left-0 z-50 lg:static h-fit ">
-      <img
-        src="/assets/logo.svg"
-        alt="al baahith logo"
-        width={75}
-        height={56}
-      />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled ? "nav-light" : "nav-transparent"}`}>
+      <div className="site-container flex justify-between items-center h-[70px]">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
+          <img src="/assets/logo.svg" alt="Al Baahith logo" width={48} height={37} />
+          <span className="font-bricolage font-bold text-[#0f1a1e] text-[15px] hidden sm:block tracking-wide">
+            Al Baahith
+          </span>
+        </Link>
 
-      <div className={state ? "nav-links" : "nav-links active"}>
-        <div className="flex lg:flex-row flex-col items-center lg:gap-[80px] gap-12">
-          <div>
-            <ul className="lg:flex lg:space-x-5 font-montserrat  text-[#00000080] text-[18px] font-medium cursor-pointer  ">
-              <NavHashLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive
-                    ? "custom-underline-active hover:text-[#267A95]"
-                    : "notactive.custom hover:text-[#267A95]"
-                }
-              >
-                <li>Home</li>
-              </NavHashLink>
-
-              <NavHashLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? "custom-underline-active hover:text-[#267A95]"
-                    : "notactive.custom hover:text-[#267A95]"
-                }
-              >
-                <li>About Us</li>
-              </NavHashLink>
-
-              <NavHashLink smooth to="/#featured">
-                <li>Courses</li>
-              </NavHashLink>
-
-              <NavHashLink
-                to="/Admission"
-                className={({ isActive }) =>
-                  isActive
-                    ? "custom-underline-active hover:text-[#267A95]"
-                    : "notactive.custom hover:text-[#267A95]"
-                }
-              >
-                <li>Admission</li>
-              </NavHashLink>
-            </ul>
-          </div>
-
-          <div className="">
-            <Link
-              to="/Admission"
-              className="flex w-[136px] h-[44px] items-center justify-center font-montserrat rounded-[4px] border border-[#267A95] text-[16px] text-[#267A95] font-semibold"
-            >
-              Register Now{" "}
-            </Link>
-          </div>
+        {/* Desktop nav */}
+        <div className="hidden lg:flex items-center gap-9">
+          <NavHashLink to="/" className={`nav-link-light ${isActive("/") ? "active" : ""}`}>
+            Home
+          </NavHashLink>
+          <NavHashLink to="/about" className={`nav-link-light ${isActive("/about") ? "active" : ""}`}>
+            About Us
+          </NavHashLink>
+          <NavHashLink to="/courses" className={`nav-link-light ${isActive("/courses") ? "active" : ""}`}>
+            Courses
+          </NavHashLink>
+          <NavHashLink to="/pricing" className={`nav-link-light ${isActive("/pricing") ? "active" : ""}`}>
+            Pricing
+          </NavHashLink>
+          <NavHashLink to="/Admission" className={`nav-link-light ${isActive("/Admission") ? "active" : ""}`}>
+            Admission
+          </NavHashLink>
         </div>
+
+        {/* Desktop CTA */}
+        <div className="hidden lg:block">
+          <Link to="/Admission" className="btn-primary text-[13px] px-6 py-2.5 inline-block">
+            Register Now
+          </Link>
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          className="lg:hidden text-[#0f1a1e] text-[1.4rem] p-1"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <FaTimes /> : <HiBars3 />}
+        </button>
       </div>
 
-      <div className="bar lg:hidden  ">
-        <button
-          className={state ? " menu-show" : "menu-hidden"}
-          onClick={handleClick}
-        >
-          <HiBars3 />
-        </button>
-        <button
-          className={state ? "menu-hidden" : "menu-show "}
-          onClick={handleClick}
-        >
-          <FaTimes />
-        </button>
+      {/* Mobile menu */}
+      <div className={`mobile-menu-light lg:hidden ${menuOpen ? "open" : ""}`}>
+        <div className="flex flex-col items-center gap-7 py-10">
+          <NavHashLink to="/" className="nav-link-light text-[16px]">Home</NavHashLink>
+          <NavHashLink to="/about" className="nav-link-light text-[16px]">About Us</NavHashLink>
+          <NavHashLink to="/courses" className="nav-link-light text-[16px]">Courses</NavHashLink>
+          <NavHashLink to="/pricing" className="nav-link-light text-[16px]">Pricing</NavHashLink>
+          <NavHashLink to="/Admission" className="nav-link-light text-[16px]">Admission</NavHashLink>
+          <Link to="/Admission" className="btn-primary text-[14px] px-8 py-3 mt-2 inline-block">
+            Register Now
+          </Link>
+        </div>
       </div>
     </nav>
   );
