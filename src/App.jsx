@@ -8,6 +8,7 @@ import Courses from "./pages/Courses";
 import AdmissionSuccess from "./pages/AdmissionSuccess";
 import CoursesListing from "./pages/CoursesListing";
 import Pricing from "./pages/Pricing";
+import ScrollToTop from "./components/ScrollToTop";
 
 const WhatsAppButton = () => (
   <a
@@ -32,6 +33,9 @@ const WhatsAppButton = () => (
 function App() {
   return (
     <>
+      {/* Scroll to top on route change */}
+      <ScrollToTop />
+
       {/* Routes */}
       
         <Routes>

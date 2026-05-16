@@ -159,7 +159,7 @@ const Hero = () => {
       {/* Stats bar */}
       <div className="pb-12 relative z-10">
         <div
-          className={`stats-bar flex justify-center gap-16 items-center py-5 px-4 anim-ready ${visible ? "anim-visible" : ""}`}
+          className={`stats-bar flex justify-center gap-8 sm:gap-16 items-center py-5 px-4 anim-ready ${visible ? "anim-visible" : ""}`}
           style={{ transitionDelay: "0.5s" }}
         >
           {[
