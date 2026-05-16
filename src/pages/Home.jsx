@@ -7,7 +7,6 @@ import Facilities from "../sections/Home/Facilities";
 import ChooseUs from "../sections/Home/ChooseUs";
 import Faq from "../sections/Home/Faq";
 import Featured from "../sections/Home/Featured";
-
 const Home = () => {
   return (
     <>

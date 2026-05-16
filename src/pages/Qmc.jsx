@@ -8,15 +8,15 @@ const Courses = ({ CourseName }) => {
   return (
     <div className="courses-page">
       <Navbar />
-      <div className="font-montserrat">
+      <div className="pt-[70px] font-manrope">
         <div className="text-center py-8 bg-[linear-gradient(180deg,rgba(224,245,246,0.8)_0%,rgba(229,245,247,0)_100%)] ">
-          <div className="text-[#267A95] font-montserrat lg:text-5xl text-[24px] font-bold mx-4 mb-3">
+          <div className="text-[#267A95] font-manrope lg:text-5xl text-[24px] font-bold mx-4 mb-3">
             Quran Memorization Course
           </div>
-          <div className="flex lg:gap-10 gap-2   lg:flex-row flex-col text-left pl-[48px]  lg:text-[16px]  text-[12px] justify-center font-semibold font-montserrat text-secondary ">
+          <div className="flex lg:gap-20 gap-2   lg:flex-row flex-col text-left pl-[48px]  lg:text-[16px]  text-[12px] justify-center font-semibold font-manrope text-secondary ">
             <div className="flex lg:flex-col flex-col-reverse text-secondary gap-2">
               <p className="flex gap-1">
-                Total Ratings
+                Ratings
                 <img src="/assets/5star.svg" alt="" />
               </p>
               <p>Duration: 24 months</p>
@@ -35,7 +35,7 @@ const Courses = ({ CourseName }) => {
         </div>
       </div>
 
-      <div className="lg:flex gap-5 font-montserrat ">
+      <div className="lg:flex gap-5 font-manrope ">
 
         <div className=" bg-white lg:w-3/5 px-[1.8rem] lg:pl-[160px] pr-5 ">
           <div className=" flex justify-center pt-5 pb-10">

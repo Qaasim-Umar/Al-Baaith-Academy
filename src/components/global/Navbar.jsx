@@ -18,7 +18,11 @@ const Navbar = () => {
 
   useEffect(() => { setMenuOpen(false); }, [location]);
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    // For hash links on home page, don't mark as active
+    if (path.includes('#')) return false;
+    return location.pathname === path;
+  };
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${scrolled ? "nav-light" : "nav-transparent"}`}>
@@ -26,22 +30,25 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 flex-shrink-0">
           <img src="/assets/logo.svg" alt="Al Baahith logo" width={48} height={37} />
-          <span className="font-bricolage font-bold text-[#1a1510] text-[15px] hidden sm:block tracking-wide">
+          <span className="font-bricolage font-bold text-[#0f1a1e] text-[15px] hidden sm:block tracking-wide">
             Al Baahith
           </span>
         </Link>
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-9">
-          {[
-            { label: "Home", to: "/" },
-            { label: "About Us", to: "/about" },
-          ].map(({ label, to }) => (
-            <NavHashLink key={label} to={to} className={`nav-link-light ${isActive(to) ? "active" : ""}`}>
-              {label}
-            </NavHashLink>
-          ))}
-          <NavHashLink smooth to="/#featured" className="nav-link-light">Courses</NavHashLink>
+          <NavHashLink to="/" className={`nav-link-light ${isActive("/") ? "active" : ""}`}>
+            Home
+          </NavHashLink>
+          <NavHashLink to="/about" className={`nav-link-light ${isActive("/about") ? "active" : ""}`}>
+            About Us
+          </NavHashLink>
+          <NavHashLink to="/courses" className={`nav-link-light ${isActive("/courses") ? "active" : ""}`}>
+            Courses
+          </NavHashLink>
+          <NavHashLink to="/pricing" className={`nav-link-light ${isActive("/pricing") ? "active" : ""}`}>
+            Pricing
+          </NavHashLink>
           <NavHashLink to="/Admission" className={`nav-link-light ${isActive("/Admission") ? "active" : ""}`}>
             Admission
           </NavHashLink>
@@ -56,7 +63,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-[#1a1510] text-[1.4rem] p-1"
+          className="lg:hidden text-[#0f1a1e] text-[1.4rem] p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
@@ -69,7 +76,8 @@ const Navbar = () => {
         <div className="flex flex-col items-center gap-7 py-10">
           <NavHashLink to="/" className="nav-link-light text-[16px]">Home</NavHashLink>
           <NavHashLink to="/about" className="nav-link-light text-[16px]">About Us</NavHashLink>
-          <NavHashLink smooth to="/#featured" className="nav-link-light text-[16px]">Courses</NavHashLink>
+          <NavHashLink to="/courses" className="nav-link-light text-[16px]">Courses</NavHashLink>
+          <NavHashLink to="/pricing" className="nav-link-light text-[16px]">Pricing</NavHashLink>
           <NavHashLink to="/Admission" className="nav-link-light text-[16px]">Admission</NavHashLink>
           <Link to="/Admission" className="btn-primary text-[14px] px-8 py-3 mt-2 inline-block">
             Register Now

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import useInView from "../../utils/useInView";
 
@@ -39,6 +39,15 @@ const programs = [
     badge: "Language",
     num: "04",
   },
+  {
+    src: "/assets/islamic-studies.png",
+    title: "Islamic Studies",
+    months: "6",
+    rating: "4.70",
+    to: "/courses/Islamic Studies",
+    badge: "Comprehensive",
+    num: "05",
+  },
 ];
 
 const ProgramCard = ({ src, title, months, rating, to, badge, num, delay }) => {
@@ -61,39 +70,39 @@ const ProgramCard = ({ src, title, months, rating, to, badge, num, delay }) => {
         {/* Decorative number */}
         <span
           className="absolute top-3 left-4 font-bricolage font-extrabold select-none leading-none"
-          style={{ fontSize: "3rem", color: "rgba(212,168,71,0.22)" }}
+          style={{ fontSize: "3rem", color: "rgba(38,122,149,0.22)" }}
         >
           {num}
         </span>
-        <span className="absolute top-4 right-4 font-montserrat text-[10px] font-bold text-[#0c0c0a] bg-[#d4a847] px-3 py-1 rounded-full tracking-widest uppercase">
+        <span className="absolute top-4 right-4 font-manrope text-[10px] font-bold text-[#ffffff] bg-[#267A95] px-3 py-1 rounded-full tracking-widest uppercase">
           {badge}
         </span>
         <div className="absolute bottom-0 left-0 right-0 p-5">
-          <h3 className="font-bricolage font-bold text-[#f5ede0] text-[18px] leading-snug">{title}</h3>
+          <h3 className="font-bricolage font-bold text-[#e8f2f5] text-[18px] leading-snug">{title}</h3>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="px-5 py-4 flex items-center justify-between" style={{ background: "#f7f5ef" }}>
+      <div className="px-5 py-4 flex items-center justify-between" style={{ background: "#f2f7f9" }}>
         <div className="flex items-center gap-2">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="12" r="10" stroke="#d4a847" strokeWidth="1.8" />
-            <path d="M12 6v6l4 2" stroke="#d4a847" strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="10" stroke="#267A95" strokeWidth="1.8" />
+            <path d="M12 6v6l4 2" stroke="#267A95" strokeWidth="1.8" strokeLinecap="round" />
           </svg>
-          <span className="font-montserrat text-[#6b5f4e] text-[11px] font-semibold tracking-wide">{months} MONTHS</span>
+          <span className="font-manrope text-[#4a5f6b] text-[11px] font-semibold tracking-wide">{months} MONTHS</span>
         </div>
         <div className="flex items-center gap-0.5">
           {[...Array(5)].map((_, i) => (
-            <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#d4a847">
+            <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#267A95">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
             </svg>
           ))}
-          <span className="font-montserrat text-[#6b5f4e] text-[10px] ml-1">({rating})</span>
+          <span className="font-manrope text-[#4a5f6b] text-[10px] ml-1">({rating})</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="font-montserrat text-[10px] font-bold text-[#d4a847] tracking-widest uppercase">Details</span>
+          <span className="font-manrope text-[10px] font-bold text-[#267A95] tracking-widest uppercase">Details</span>
           <svg width="11" height="9" viewBox="0 0 13 12" fill="none">
-            <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="#d4a847" strokeWidth="1.5" />
+            <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="#267A95" strokeWidth="1.5" />
           </svg>
         </div>
       </div>
@@ -107,9 +116,22 @@ const ProgramCard = ({ src, title, months, rating, to, badge, num, delay }) => {
 
 const Featured = () => {
   const [headingRef, headingVisible] = useInView();
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+  };
 
   return (
-    <section className="relative py-24 overflow-hidden" id="featured" style={{ background: "#f7f5ef" }}>
+    <section className="relative py-24 overflow-hidden" id="featured" style={{ background: "#f2f7f9" }}>
       {/* Arabic watermark */}
       <div
         aria-hidden="true"
@@ -123,25 +145,66 @@ const Featured = () => {
         {/* Heading */}
         <div
           ref={headingRef}
-          className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-14 anim-ready ${headingVisible ? "anim-visible" : ""}`}
+          className={`flex flex-col gap-3 mb-14 anim-ready ${headingVisible ? "anim-visible" : ""}`}
         >
-          <div className="flex flex-col gap-4">
-            <span className="section-label">Programs</span>
-            <h2 className="section-heading">Featured Programs</h2>
-            <div className="heading-bar" />
-          </div>
-          <p className="font-montserrat text-[#6b5f4e] text-[15px] leading-[1.8] max-w-[420px] lg:text-right">
+          <span className="section-label">Programs</span>
+          <h2 className="section-heading">Featured <span className="gradient-text">Programs</span></h2>
+          <p className="font-manrope text-[#4a5f6b] text-[15px] leading-[1.8]">
             Elevate your learning experience with our diverse range of programs designed to inspire, educate, and empower.
           </p>
         </div>
 
-        {/* 2×2 responsive grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {programs.map((p, i) => (
-            <ProgramCard key={i} {...p} delay={i * 0.1} />
-          ))}
+        {/* Carousel with left and right arrows */}
+        <div className="relative">
+          {/* Left Arrow Button */}
+          <button
+            onClick={scrollLeft}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#267A95] hover:text-white transition-all duration-300 group border border-[#267A95]/20"
+            aria-label="Scroll to see previous programs"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#267A95] group-hover:text-white">
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Scrollable container */}
+          <div 
+            ref={scrollRef}
+            className="flex gap-5 overflow-x-auto scrollbar-hide pb-4 px-6"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {programs.map((p, i) => (
+              <div 
+                key={i} 
+                className="flex-shrink-0 w-[calc(25%-15px)] min-w-[280px]"
+              >
+                <ProgramCard {...p} delay={i * 0.1} />
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow Button */}
+          <button
+            onClick={scrollRight}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-[#267A95] hover:text-white transition-all duration-300 group border border-[#267A95]/20"
+            aria-label="Scroll to see more programs"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-[#267A95] group-hover:text-white">
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+
+          {/* Gradient fade on edges */}
+          <div className="absolute left-0 top-0 bottom-4 w-8 bg-gradient-to-r from-[#f2f7f9] to-transparent pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-4 w-8 bg-gradient-to-l from-[#f2f7f9] to-transparent pointer-events-none"></div>
         </div>
       </div>
+
+      <style>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 };

@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #c9941a;
-  --color-primary-bright: #e8b84b;
-  --color-primary-light: rgba(201,148,26,0.1);
-  --color-secondary: #6b5f4e;
-  --color-secondary2: #1a1510;
-  --color-gold: #c9941a;
-  --color-surface: #faf9f5;
-  --color-surface2: #f5f3ed;
+  --color-primary: #267A95;
+  --color-primary-bright: #3a9bb8;
+  --color-primary-light: rgba(38,122,149,0.1);
+  --color-secondary: #4a5f6b;
+  --color-secondary2: #0f1a1e;
+  --color-gold: #267A95;
+  --color-surface: #f5f9fa;
+  --color-surface2: #edf3f5;
 
   --font-bricolage: "Bricolage Grotesque", sans-serif;
   --font-cairo: "Cairo", sans-serif;
   --font-roboto: "Roboto", sans-serif;
   --font-sourcecodepro: "Source Code Pro", monospace;
   --font-lato: "Lato", sans-serif;
+  --font-manrope: "Manrope", sans-serif;
   --font-montserrat: "Montserrat", sans-serif;
   --font-amiri: "Amiri", serif;
   --font-SairaStencilOne: "Saira Stencil One", sans-serif;

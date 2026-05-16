@@ -14,7 +14,7 @@ const ChooseUsCard = ({ chooseHeading, chooseSrc, choosePara }) => {
           className="lg:w-[34px] w-[30px]"
         />
 
-        <p className="font-montserrat lg:text-[12px] text-[11px] font-medium ">
+        <p className="font-manrope lg:text-[12px] text-[11px] font-medium ">
           {choosePara}
         </p>
       </div>

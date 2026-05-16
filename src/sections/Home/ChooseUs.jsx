@@ -39,7 +39,7 @@ const ChooseUs = () => {
   const [gridRef, gridVisible] = useInView();
 
   return (
-    <section className="relative py-24 overflow-hidden" style={{ background: "#f5f3ed" }}>
+    <section className="relative py-24 overflow-hidden" style={{ background: "#edf3f5" }}>
       {/* Arabic watermark */}
       <div
         aria-hidden="true"
@@ -49,13 +49,13 @@ const ChooseUs = () => {
         الحكمة
       </div>
 
-      {/* Gold radial glow top-right */}
+      {/* Teal radial glow top-right */}
       <div
         aria-hidden="true"
         className="absolute top-0 right-0 pointer-events-none"
         style={{
           width: "500px", height: "500px",
-          background: "radial-gradient(circle at 75% 20%, rgba(180,140,50,0.04) 0%, transparent 65%)",
+          background: "radial-gradient(circle at 75% 20%, rgba(38,122,149,0.04) 0%, transparent 65%)",
         }}
       />
 
@@ -63,29 +63,26 @@ const ChooseUs = () => {
         {/* Heading */}
         <div
           ref={headingRef}
-          className={`flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 mb-16 anim-ready ${headingVisible ? "anim-visible" : ""}`}
+          className={`flex flex-col gap-3 mb-16 anim-ready ${headingVisible ? "anim-visible" : ""}`}
         >
-          <div className="flex flex-col gap-4">
-            <span className="section-label">Why Choose Us</span>
-            <h2 className="section-heading">Choose Excellence,<br />Embrace Expertise</h2>
-            <div className="heading-bar" />
-          </div>
-          <p className="font-montserrat text-[#6b5f4e] text-[15px] leading-[1.8] max-w-[360px] lg:text-right">
+          <span className="section-label">Why Choose Us</span>
+          <h2 className="section-heading">Choose Excellence, <span className="gradient-text">Embrace Expertise</span></h2>
+          <p className="font-manrope text-[#4a5f6b] text-[15px] leading-[1.8]">
             Elevate Your Learning Journey with Us!
           </p>
         </div>
 
-        {/* Mosaic grid — borderless tiles separated by 1px gold lines */}
+        {/* Mosaic grid — borderless tiles separated by 1px teal lines */}
         <div
           ref={gridRef}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
-          style={{ background: "rgba(180,140,50,0.1)" }}
+          style={{ background: "rgba(38,122,149,0.1)" }}
         >
           {features.map((f, i) => (
             <div
               key={i}
               className={`p-8 flex flex-col gap-4 min-h-[220px] group anim-ready ${gridVisible ? "anim-visible" : ""}`}
-              style={{ background: "#f5f3ed", transitionDelay: `${i * 0.09}s` }}
+              style={{ background: "#edf3f5", transitionDelay: `${i * 0.09}s` }}
             >
               <span
                 className="font-bricolage font-extrabold gradient-text select-none leading-none"
@@ -95,17 +92,17 @@ const ChooseUs = () => {
               </span>
 
               <div className="flex-1">
-                <h3 className="font-bricolage font-bold text-[#1a1510] text-[17px] mb-3 leading-snug group-hover:text-[#a67c00] transition-colors duration-200">
+                <h3 className="font-bricolage font-bold text-[#0f1a1e] text-[17px] mb-3 leading-snug group-hover:text-[#1a5f78] transition-colors duration-200">
                   {f.heading}
                 </h3>
-                <p className="font-montserrat text-[#6b5f4e] text-[13px] leading-[1.8]">
+                <p className="font-manrope text-[#4a5f6b] text-[13px] leading-[1.8]">
                   {f.body}
                 </p>
               </div>
 
               <div className="flex gap-1.5 mt-2">
-                <div className="h-0.5 w-8 rounded-full bg-[#d4a847] opacity-35 group-hover:opacity-100 group-hover:w-14 transition-all duration-300" />
-                <div className="h-0.5 w-4 rounded-full bg-[rgba(212,168,71,0.15)]" />
+                <div className="h-0.5 w-8 rounded-full bg-[#267A95] opacity-35 group-hover:opacity-100 group-hover:w-14 transition-all duration-300" />
+                <div className="h-0.5 w-4 rounded-full bg-[rgba(38,122,149,0.15)]" />
               </div>
             </div>
           ))}
