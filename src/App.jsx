@@ -41,11 +41,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/admission" element={<Admission />} />
+          <Route path="/Admission" element={<Admission />} />
           <Route path="/qmc" element={<Qmc />} />
           <Route path="/courses" element={<CoursesListing />} />
           <Route path="/pricing" element={<Pricing />} />
-          <Route path="/Courses/:id" element={<Courses />} />
+          <Route path="/courses/:id" element={<Courses />} />
           <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
         </Routes>
 
