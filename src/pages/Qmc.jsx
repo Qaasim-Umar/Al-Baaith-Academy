@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../components/global/Navbar";
 import Footer from "../components/global/Footer";
 import CoursesOutline from "../components/CoursesOutline";
@@ -25,9 +26,9 @@ const Courses = ({ CourseName }) => {
             <div className="flex flex-col  gap-2">
               <p>
                 Application deadline:{" "}
-                <a href="" className="text-[#00F]">
+                <Link to="/Admission" className="text-[#00F]">
                   Request info
-                </a>
+                </Link>
               </p>
               <p>Language of instruction: English, Arabic </p>
             </div>
@@ -212,12 +213,12 @@ Commitment to regular attendance and daily memorization practice.
 
           <div className="">
             <div className="flex py-2 gap-3 mb-20 ">
-              <button className="lg:px-[44px]b w-[166px] h-[52px] lg:w-[228px]  text-white text-[11px] font-semibold rounded-[2.9px]     bg-[linear-gradient(92deg,#267A95_4.75%,#2DC8D6_100%)] shadow-[0.689px_3.444px_9.644px_0_rgba(38,122,149,0.20)]">
+              <Link to="/Admission" className="lg:px-[44px]b w-[166px] h-[52px] lg:w-[228px] flex items-center justify-center text-white text-[11px] font-semibold rounded-[2.9px]     bg-[linear-gradient(92deg,#267A95_4.75%,#2DC8D6_100%)] shadow-[0.689px_3.444px_9.644px_0_rgba(38,122,149,0.20)]">
                 Book a free trial
-              </button>
-              <button className="lg:px-[44px] w-[166px] h-[52px] lg:w-[228px]  text-primary text-[11px] font-semibold rounded-[2.9px] border-[1.2px] border-primary ">
+              </Link>
+              <Link to="/pricing" className="lg:px-[44px] w-[166px] h-[52px] lg:w-[228px] flex items-center justify-center text-primary text-[11px] font-semibold rounded-[2.9px] border-[1.2px] border-primary ">
                 Package Pricing
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -280,12 +281,12 @@ Commitment to regular attendance and daily memorization practice.
                 <p>Flexible Learning Schedule</p>
               </div>
               <div className="flex flex-col bg-[#FBFBFB] py-2 gap-2">
-                <button className="m-auto px-[33px] py-[9.7px]  text-white text-[11px] font-semibold rounded-[2.9px]     bg-[linear-gradient(92deg,#267A95_4.75%,#2DC8D6_100%)] shadow-[0.689px_3.444px_9.644px_0_rgba(38,122,149,0.20)]">
+                <Link to="/Admission" className="m-auto px-[33px] py-[9.7px] text-white text-[11px] font-semibold rounded-[2.9px]     bg-[linear-gradient(92deg,#267A95_4.75%,#2DC8D6_100%)] shadow-[0.689px_3.444px_9.644px_0_rgba(38,122,149,0.20)]">
                   Book a free trial
-                </button>
-                <button className="m-auto px-[30px] py-[9.4px] text-primary text-[11px] font-semibold rounded-[2.9px] border-[1.2px] border-primary ">
+                </Link>
+                <Link to="/pricing" className="m-auto px-[30px] py-[9.4px] text-primary text-[11px] font-semibold rounded-[2.9px] border-[1.2px] border-primary ">
                   Package Pricing
-                </button>
+                </Link>
               </div>
             </div>
           </div>

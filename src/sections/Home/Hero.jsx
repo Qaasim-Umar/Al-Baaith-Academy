@@ -159,7 +159,7 @@ const Hero = () => {
       {/* Stats bar */}
       <div className="pb-12 relative z-10">
         <div
-          className={`stats-bar flex justify-center gap-16 items-center py-5 px-4 anim-ready ${visible ? "anim-visible" : ""}`}
+          className={`stats-bar flex justify-center gap-4 sm:gap-16 items-stretch py-5 px-4 anim-ready ${visible ? "anim-visible" : ""}`}
           style={{ transitionDelay: "0.5s" }}
         >
           {[
@@ -168,15 +168,15 @@ const Hero = () => {
             { label: "Expert Tutors", display: `${tutors}+` },
           ].map((s, i) => (
             <React.Fragment key={i}>
-              {i > 0 && <div className="w-px h-8 bg-gray-300" />}
-              <div className="flex flex-col items-center gap-1.5">
+              {i > 0 && <div className="w-px bg-gray-300 self-center" style={{ height: '32px' }} />}
+              <div className="flex flex-col items-center justify-center gap-1.5 flex-1 min-w-[100px]">
                 <span
                   className="font-bricolage gradient-text font-extrabold leading-none"
                   style={{ fontSize: "clamp(1.6rem, 3vw, 2rem)" }}
                 >
                   {s.display}
                 </span>
-                <span className="font-manrope text-[#4a5f6b] text-[11px] tracking-wider uppercase">{s.label}</span>
+                <span className="font-manrope text-[#4a5f6b] text-[11px] tracking-wider uppercase text-center whitespace-nowrap">{s.label}</span>
               </div>
             </React.Fragment>
           ))}

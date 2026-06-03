@@ -35,7 +35,7 @@ const programs = [
     title: "Modern Standard Arabic",
     months: "6",
     rating: "5.00",
-    to: null,
+    to: "/courses/Modern Standard Arabic",
     badge: "Language",
     num: "04",
   },
