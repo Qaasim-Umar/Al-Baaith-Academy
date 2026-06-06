@@ -131,9 +131,9 @@ const Hero = () => {
                 <path d="M0.746094 5.68H11.428M11.428 5.68L6.62115 0.873047M11.428 5.68L6.62115 10.4868" stroke="#ffffff" strokeWidth="1.8" />
               </svg>
             </Link>
-            <NavHashLink smooth to="/#featured" className="btn-outline text-[14px] px-6 py-3.5">
-              View Courses
-            </NavHashLink>
+            <a href="https://calendly.com/albaahithacademy/30min" target="_blank" rel="noopener noreferrer" className="btn-outline text-[14px] px-6 py-3.5">
+              Book a free trial
+            </a>
           </div>
         </div>
 
